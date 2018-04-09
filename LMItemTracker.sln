@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMRItemTracker", "LMRItemTracker.csproj", "{68CA971C-51F9-480D-ADED-EBD7D31C9CCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMItemTracker", "LMItemTracker.csproj", "{68CA971C-51F9-480D-ADED-EBD7D31C9CCE}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -21,5 +21,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64E30B15-B051-4499-8B04-6E58220068F1}
 	EndGlobalSection
 EndGlobal

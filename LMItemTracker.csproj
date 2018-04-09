@@ -7,8 +7,8 @@
     <ProjectGuid>{68CA971C-51F9-480D-ADED-EBD7D31C9CCE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LMRItemTracker</RootNamespace>
-    <AssemblyName>LMRItemTracker</AssemblyName>
+    <RootNamespace>LMItemTracker</RootNamespace>
+    <AssemblyName>LMItemTracker</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

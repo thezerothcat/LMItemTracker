@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace LMRItemTracker
+namespace LMItemTracker
 {
     public partial class LaMulanaItemTrackerForm : Form
     {
@@ -139,7 +139,7 @@ namespace LMRItemTracker
             this.allItems.Add("Fruit of Eden");
             this.allItems.Add("Gauntlet");
             this.allItems.Add("Glove");
-            this.allItems.Add("Glyph Reader");
+            this.allItems.Add("reader.exe");
             this.allItems.Add("Grapple Claw");
             this.allItems.Add("guild.exe");
             this.allItems.Add("Hand Scanner");
@@ -280,6 +280,28 @@ namespace LMRItemTracker
                     SetStartingImage(item);
                 }
             }
+
+            itemsInPanel = new List<String>(Properties.Settings.Default.Panel6Contents.Split(','));
+            for (int index = 0; index < itemsInPanel.Count; index++)
+            {
+                String item = itemsInPanel[index];
+                Control control = GetControl(item);
+                if (control != null)
+                {
+                    flowLayoutPanel6.Controls.Add(control);
+                    control.Margin = new Padding(0);
+                    control.TabIndex = index;
+                    SetStartingImage(item);
+                }
+            }
+
+            if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+            {
+                foreach (Control control in bossPanel.Controls)
+                {
+                    control.Visible = false;
+                }
+            }
         }
 
         private void SetStartingImage(String item)
@@ -330,6 +352,7 @@ namespace LMRItemTracker
                 addItemPanel3ToolStripMenuItem.DropDownItems.Add(CreateMenuItem(item, new System.EventHandler(this.addItemToPanel3)));
                 addItemPanel4ToolStripMenuItem.DropDownItems.Add(CreateMenuItem(item, new System.EventHandler(this.addItemToPanel4)));
                 addItemPanel5ToolStripMenuItem.DropDownItems.Add(CreateMenuItem(item, new System.EventHandler(this.addItemToPanel5)));
+                addItemPanel6ToolStripMenuItem.DropDownItems.Add(CreateMenuItem(item, new System.EventHandler(this.addItemToPanel6)));
                 removeItemToolStripMenuItem.DropDownItems.Add(CreateMenuItem(item, new System.EventHandler(this.removeItemFromPanel)));
             }
         }
@@ -343,7 +366,7 @@ namespace LMRItemTracker
             // to the Result property of the DoWorkEventArgs
             // object. This is will be available to the 
             // RunWorkerCompleted eventhandler.
-            e.Result = LMRItemTracker.Program.DoStuff(this, this._xmlStream);
+            e.Result = LMItemTracker.Program.DoStuff(this, this._xmlStream);
         }
 
         private String getItemName(String flagName)
@@ -610,7 +633,7 @@ namespace LMRItemTracker
             }
             else if("w-soft-reader".Equals(flagName))
             {
-                return "Glyph Reader";
+                return "reader.exe";
             }
             else if ("w-soft-torude".Equals(flagName))
             {
@@ -737,11 +760,11 @@ namespace LMRItemTracker
                 {
                     if (this.mantrasRecited)
                     {
-                        SetImage(keySword, global::LMRItemTracker.Properties.Resources.Icon_keysword_awakened);
+                        SetImage(keySword, global::LMItemTracker.Properties.Resources.Icon_keysword_awakened);
                     }
                     else
                     {
-                        SetImage(keySword, global::LMRItemTracker.Properties.Resources.Icon_keysword);
+                        SetImage(keySword, global::LMItemTracker.Properties.Resources.Icon_keysword);
                     }
                 }
                 else
@@ -786,13 +809,13 @@ namespace LMRItemTracker
                         this.mekuriCollected = true;
                         if (this.miracleCollected)
                         {
-                            SetImage(keyFairy, global::LMRItemTracker.Properties.Resources.Icon_keyfairy);
+                            SetImage(keyFairy, global::LMItemTracker.Properties.Resources.Icon_keyfairy);
                         }
                     }
                     else
                     {
                         this.mekuriCollected = false;
-                        SetImage(keyFairy, global::LMRItemTracker.Properties.Resources.Icon_keyfairy_blank);
+                        SetImage(keyFairy, global::LMItemTracker.Properties.Resources.Icon_keyfairy_blank);
                     }
                 }
                 else if ("w-soft-miracle".Equals(flagName))
@@ -802,13 +825,13 @@ namespace LMRItemTracker
                         this.miracleCollected = true;
                         if (this.mekuriCollected)
                         {
-                            SetImage(keyFairy, global::LMRItemTracker.Properties.Resources.Icon_keyfairy);
+                            SetImage(keyFairy, global::LMItemTracker.Properties.Resources.Icon_keyfairy);
                         }
                     }
                     else
                     {
                         this.miracleCollected = false;
-                        SetImage(keyFairy, global::LMRItemTracker.Properties.Resources.Icon_keyfairy_blank);
+                        SetImage(keyFairy, global::LMItemTracker.Properties.Resources.Icon_keyfairy_blank);
                     }
                 }
                 else if ("w-soft-yagomap".Equals(flagName))
@@ -857,7 +880,7 @@ namespace LMRItemTracker
                 SetImage(flagName, isAdd);
                 if (isAdd)
                 {
-                    SetImage(mantra, global::LMRItemTracker.Properties.Resources.Icon_djedpillar_small);
+                    SetImage(mantra, global::LMItemTracker.Properties.Resources.Icon_djedpillar_small);
                 }
                 else
                 {
@@ -879,11 +902,11 @@ namespace LMRItemTracker
             {
                 if (isAdd)
                 {
-                    SetImage(vessel, global::LMRItemTracker.Properties.Resources.Icon_medicineofthemind);
+                    SetImage(vessel, global::LMItemTracker.Properties.Resources.Icon_medicineofthemind);
                 }
                 else
                 {
-                    SetImage(vessel, global::LMRItemTracker.Properties.Resources.Icon_vessel); // todo: what if we don't have vessel?
+                    SetImage(vessel, global::LMItemTracker.Properties.Resources.Icon_vessel); // todo: what if we don't have vessel?
                 }
             }
         }
@@ -999,14 +1022,14 @@ namespace LMRItemTracker
             {
                 if (isAdd)
                 {
-                    SetImage(lampOfTime, global::LMRItemTracker.Properties.Resources.Icon_lampoftime);
+                    SetImage(lampOfTime, global::LMItemTracker.Properties.Resources.Icon_lampoftime);
                 }
             }
             else if ("invus-lamp-unlit".Equals(displayname))
             {
                 if (isAdd)
                 {
-                    SetImage(lampOfTime, global::LMRItemTracker.Properties.Resources.Icon_lampoftime_unlit);
+                    SetImage(lampOfTime, global::LMItemTracker.Properties.Resources.Icon_lampoftime_unlit);
                 }
             }
         }
@@ -1076,7 +1099,7 @@ namespace LMRItemTracker
                         lastItem1.Image = lastItemImage;
                         if ("w-map-shrine".Equals(flagName))
                         {
-                            lastItem1.BackgroundImage = global::LMRItemTracker.Properties.Resources.Icon_map;
+                            lastItem1.BackgroundImage = global::LMItemTracker.Properties.Resources.Icon_map;
                         }
                         else
                         {
@@ -1096,88 +1119,128 @@ namespace LMRItemTracker
             {
                 if (isAdd)
                 {
-                    setBackgroundImage(amphisbaena, global::LMRItemTracker.Properties.Resources.Boss_amphisbaena);
+                    setBackgroundImage(amphisbaena, global::LMItemTracker.Properties.Resources.Boss_amphisbaena);
                 }
                 else
                 {
-                    setBackgroundImage(amphisbaena, global::LMRItemTracker.Properties.Resources.Boss_amphisbaena_blank);
+                    setBackgroundImage(amphisbaena, global::LMItemTracker.Properties.Resources.Boss_amphisbaena_blank);
+                }
+
+                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                {
+                    toggleVisibility(amphisbaena, isAdd);
                 }
             }
             else if ("boss-sakit".Equals(itemName))
             {
                 if (isAdd)
                 {
-                    setBackgroundImage(sakit, global::LMRItemTracker.Properties.Resources.Boss_sakit);
+                    setBackgroundImage(sakit, global::LMItemTracker.Properties.Resources.Boss_sakit);
                 }
                 else
                 {
-                    setBackgroundImage(sakit, global::LMRItemTracker.Properties.Resources.Boss_sakit_blank);
+                    setBackgroundImage(sakit, global::LMItemTracker.Properties.Resources.Boss_sakit_blank);
+                }
+
+                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                {
+                    toggleVisibility(sakit, isAdd);
                 }
             }
             else if ("boss-ellmac".Equals(itemName))
             {
                 if (isAdd)
                 {
-                    setBackgroundImage(ellmac, global::LMRItemTracker.Properties.Resources.Boss_ellmac);
+                    setBackgroundImage(ellmac, global::LMItemTracker.Properties.Resources.Boss_ellmac);
                 }
                 else
                 {
-                    setBackgroundImage(ellmac, global::LMRItemTracker.Properties.Resources.Boss_ellmac_blank);
+                    setBackgroundImage(ellmac, global::LMItemTracker.Properties.Resources.Boss_ellmac_blank);
+                }
+
+                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                {
+                    toggleVisibility(ellmac, isAdd);
                 }
             }
             else if ("boss-bahamut".Equals(itemName))
             {
                 if (isAdd)
                 {
-                    setBackgroundImage(bahamut, global::LMRItemTracker.Properties.Resources.Boss_bahamut);
+                    setBackgroundImage(bahamut, global::LMItemTracker.Properties.Resources.Boss_bahamut);
                 }
                 else
                 {
-                    setBackgroundImage(bahamut, global::LMRItemTracker.Properties.Resources.Boss_bahamut_blank);
+                    setBackgroundImage(bahamut, global::LMItemTracker.Properties.Resources.Boss_bahamut_blank);
+                }
+
+                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                {
+                    toggleVisibility(bahamut, isAdd);
                 }
             }
             else if ("boss-viy".Equals(itemName))
             {
                 if (isAdd)
                 {
-                    setBackgroundImage(viy, global::LMRItemTracker.Properties.Resources.Boss_viy);
+                    setBackgroundImage(viy, global::LMItemTracker.Properties.Resources.Boss_viy);
                 }
                 else
                 {
-                    setBackgroundImage(viy, global::LMRItemTracker.Properties.Resources.Boss_viy_blank);
+                    setBackgroundImage(viy, global::LMItemTracker.Properties.Resources.Boss_viy_blank);
+                }
+
+                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                {
+                    toggleVisibility(viy, isAdd);
                 }
             }
             else if ("boss-palenque".Equals(itemName))
             {
                 if (isAdd)
                 {
-                    setBackgroundImage(palenque, global::LMRItemTracker.Properties.Resources.Boss_palenque);
+                    setBackgroundImage(palenque, global::LMItemTracker.Properties.Resources.Boss_palenque);
                 }
                 else
                 {
-                    setBackgroundImage(palenque, global::LMRItemTracker.Properties.Resources.Boss_palenque_blank);
+                    setBackgroundImage(palenque, global::LMItemTracker.Properties.Resources.Boss_palenque_blank);
+                }
+
+                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                {
+                    toggleVisibility(palenque, isAdd);
                 }
             }
             else if ("boss-baphomet".Equals(itemName))
             {
                 if (isAdd)
                 {
-                    setBackgroundImage(baphomet, global::LMRItemTracker.Properties.Resources.Boss_baphomet);
+                    setBackgroundImage(baphomet, global::LMItemTracker.Properties.Resources.Boss_baphomet);
                 }
                 else
                 {
-                    setBackgroundImage(baphomet, global::LMRItemTracker.Properties.Resources.Boss_baphomet_blank);
+                    setBackgroundImage(baphomet, global::LMItemTracker.Properties.Resources.Boss_baphomet_blank);
+                }
+
+                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                {
+                    toggleVisibility(baphomet, isAdd);
                 }
             }
             else if ("boss-tiamat".Equals(itemName))
             {
                 if (isAdd)
                 {
-                    setBackgroundImage(tiamat, global::LMRItemTracker.Properties.Resources.Boss_tiamat);
+                    setBackgroundImage(tiamat, global::LMItemTracker.Properties.Resources.Boss_tiamat);
                 }
                 else
                 {
-                    setBackgroundImage(tiamat, global::LMRItemTracker.Properties.Resources.Boss_tiamat_blank);
+                    setBackgroundImage(tiamat, global::LMItemTracker.Properties.Resources.Boss_tiamat_blank);
+                }
+
+                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                {
+                    toggleVisibility(tiamat, isAdd);
                 }
             }
         }
@@ -1185,19 +1248,6 @@ namespace LMRItemTracker
         public void toggleWhip(Boolean isAdd)
         {
             SetImage("whip", isAdd);
-
-            //if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
-            //{
-            //    toggleVisibility(GetControl("Whip"), isAdd);
-            //}
-            //if (isAdd)
-            //{
-            //    SetImage(whip, getFoundImage("whip"));
-            //}
-            //else
-            //{
-            //    SetImage(whip, getBlankImage("whip"));
-            //}
         }
 
         public void toggleMap(string flagName, Boolean isAdd)
@@ -1219,41 +1269,32 @@ namespace LMRItemTracker
 
         public void toggleMantra(string flagName, bool isAdd)
         {
-            if ("mantra-keysword".Equals(flagName))
+            if ("mantra-amphisbaena".Equals(flagName))
             {
                 if (isAdd)
                 {
+                    SetImage(amphisbaena, global::LMItemTracker.Properties.Resources.Boss_sealed);
                     this.mantrasRecited = true;
                     if (this.keySwordCollected)
                     {
-                        SetImage(keySword, global::LMRItemTracker.Properties.Resources.Icon_keysword_awakened);
+                        SetImage(keySword, global::LMItemTracker.Properties.Resources.Icon_keysword_awakened);
                     }
-                }
-                else
-                {
-                    this.mantrasRecited = false;
-                    if (this.keySwordCollected)
-                    {
-                        SetImage(keySword, global::LMRItemTracker.Properties.Resources.Icon_keysword);
-                    }
-                }
-            }
-            else if ("mantra-amphisbaena".Equals(flagName))
-            {
-                if (isAdd)
-                {
-                    SetImage(amphisbaena, global::LMRItemTracker.Properties.Resources.Boss_sealed);
                 }
                 else
                 {
                     SetImage(amphisbaena, null);
+                    this.mantrasRecited = false;
+                    if (this.keySwordCollected)
+                    {
+                        SetImage(keySword, global::LMItemTracker.Properties.Resources.Icon_keysword);
+                    }
                 }
             }
             else if ("mantra-sakit".Equals(flagName))
             {
                 if (isAdd)
                 {
-                    SetImage(sakit, global::LMRItemTracker.Properties.Resources.Boss_sealed);
+                    SetImage(sakit, global::LMItemTracker.Properties.Resources.Boss_sealed);
                 }
                 else
                 {
@@ -1264,7 +1305,7 @@ namespace LMRItemTracker
             {
                 if (isAdd)
                 {
-                    SetImage(ellmac, global::LMRItemTracker.Properties.Resources.Boss_sealed);
+                    SetImage(ellmac, global::LMItemTracker.Properties.Resources.Boss_sealed);
                 }
                 else
                 {
@@ -1275,7 +1316,7 @@ namespace LMRItemTracker
             {
                 if (isAdd)
                 {
-                    SetImage(bahamut, global::LMRItemTracker.Properties.Resources.Boss_sealed);
+                    SetImage(bahamut, global::LMItemTracker.Properties.Resources.Boss_sealed);
                 }
                 else
                 {
@@ -1286,7 +1327,7 @@ namespace LMRItemTracker
             {
                 if (isAdd)
                 {
-                    SetImage(viy, global::LMRItemTracker.Properties.Resources.Boss_sealed);
+                    SetImage(viy, global::LMItemTracker.Properties.Resources.Boss_sealed);
                 }
                 else
                 {
@@ -1297,7 +1338,7 @@ namespace LMRItemTracker
             {
                 if (isAdd)
                 {
-                    SetImage(palenque, global::LMRItemTracker.Properties.Resources.Boss_sealed);
+                    SetImage(palenque, global::LMItemTracker.Properties.Resources.Boss_sealed);
                 }
                 else
                 {
@@ -1308,7 +1349,7 @@ namespace LMRItemTracker
             {
                 if (isAdd)
                 {
-                    SetImage(baphomet, global::LMRItemTracker.Properties.Resources.Boss_sealed);
+                    SetImage(baphomet, global::LMItemTracker.Properties.Resources.Boss_sealed);
                 }
                 else
                 {
@@ -1319,7 +1360,7 @@ namespace LMRItemTracker
             {
                 if (isAdd)
                 {
-                    SetImage(tiamat, global::LMRItemTracker.Properties.Resources.Boss_sealed);
+                    SetImage(tiamat, global::LMItemTracker.Properties.Resources.Boss_sealed);
                 }
                 else
                 {
@@ -1397,7 +1438,7 @@ namespace LMRItemTracker
             try
             {
                 this._assembly = Assembly.GetExecutingAssembly();
-                this._xmlStream = _assembly.GetManifestResourceStream("LMRItemTracker.names.xml");
+                this._xmlStream = _assembly.GetManifestResourceStream("LMItemTracker.names.xml");
             }
             catch
             {
@@ -1447,6 +1488,7 @@ namespace LMRItemTracker
                     Properties.Settings.Default.Panel3Contents = rebuildPanelContents(Properties.Settings.Default.Panel3Contents, itemName, false);
                     Properties.Settings.Default.Panel4Contents = rebuildPanelContents(Properties.Settings.Default.Panel4Contents, itemName, false);
                     Properties.Settings.Default.Panel5Contents = rebuildPanelContents(Properties.Settings.Default.Panel5Contents, itemName, false);
+                    Properties.Settings.Default.Panel6Contents = rebuildPanelContents(Properties.Settings.Default.Panel6Contents, itemName, false);
                 }
             }
         }
@@ -1473,6 +1515,7 @@ namespace LMRItemTracker
                     Properties.Settings.Default.Panel3Contents = rebuildPanelContents(Properties.Settings.Default.Panel3Contents, itemName, false);
                     Properties.Settings.Default.Panel4Contents = rebuildPanelContents(Properties.Settings.Default.Panel4Contents, itemName, false);
                     Properties.Settings.Default.Panel5Contents = rebuildPanelContents(Properties.Settings.Default.Panel5Contents, itemName, false);
+                    Properties.Settings.Default.Panel6Contents = rebuildPanelContents(Properties.Settings.Default.Panel6Contents, itemName, false);
                 }
             }
         }
@@ -1499,6 +1542,7 @@ namespace LMRItemTracker
                     Properties.Settings.Default.Panel2Contents = rebuildPanelContents(Properties.Settings.Default.Panel2Contents, itemName, false);
                     Properties.Settings.Default.Panel4Contents = rebuildPanelContents(Properties.Settings.Default.Panel4Contents, itemName, false);
                     Properties.Settings.Default.Panel5Contents = rebuildPanelContents(Properties.Settings.Default.Panel5Contents, itemName, false);
+                    Properties.Settings.Default.Panel6Contents = rebuildPanelContents(Properties.Settings.Default.Panel6Contents, itemName, false);
                 }
             }
         }
@@ -1525,6 +1569,7 @@ namespace LMRItemTracker
                     Properties.Settings.Default.Panel2Contents = rebuildPanelContents(Properties.Settings.Default.Panel2Contents, itemName, false);
                     Properties.Settings.Default.Panel3Contents = rebuildPanelContents(Properties.Settings.Default.Panel3Contents, itemName, false);
                     Properties.Settings.Default.Panel5Contents = rebuildPanelContents(Properties.Settings.Default.Panel5Contents, itemName, false);
+                    Properties.Settings.Default.Panel6Contents = rebuildPanelContents(Properties.Settings.Default.Panel6Contents, itemName, false);
                 }
             }
         }
@@ -1551,6 +1596,34 @@ namespace LMRItemTracker
                     Properties.Settings.Default.Panel2Contents = rebuildPanelContents(Properties.Settings.Default.Panel2Contents, itemName, false);
                     Properties.Settings.Default.Panel3Contents = rebuildPanelContents(Properties.Settings.Default.Panel3Contents, itemName, false);
                     Properties.Settings.Default.Panel4Contents = rebuildPanelContents(Properties.Settings.Default.Panel4Contents, itemName, false);
+                    Properties.Settings.Default.Panel6Contents = rebuildPanelContents(Properties.Settings.Default.Panel6Contents, itemName, false);
+                }
+            }
+        }
+
+        private void addItemToPanel6(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem)
+            {
+                String itemName = ((ToolStripMenuItem)sender).Text;
+                Control control = GetControl(itemName);
+                if (control == null)
+                {
+                    MessageBox.Show("Problem adding " + itemName + " to panel");
+                }
+                else
+                {
+                    control.TabIndex = flowLayoutPanel6.Controls.Count;
+                    flowLayoutPanel6.Controls.Add(control);
+                    control.Margin = new Padding(0);
+
+                    Properties.Settings.Default.Panel6Contents = rebuildPanelContents(Properties.Settings.Default.Panel6Contents, itemName, true);
+
+                    Properties.Settings.Default.Panel1Contents = rebuildPanelContents(Properties.Settings.Default.Panel1Contents, itemName, false);
+                    Properties.Settings.Default.Panel2Contents = rebuildPanelContents(Properties.Settings.Default.Panel2Contents, itemName, false);
+                    Properties.Settings.Default.Panel3Contents = rebuildPanelContents(Properties.Settings.Default.Panel3Contents, itemName, false);
+                    Properties.Settings.Default.Panel4Contents = rebuildPanelContents(Properties.Settings.Default.Panel4Contents, itemName, false);
+                    Properties.Settings.Default.Panel5Contents = rebuildPanelContents(Properties.Settings.Default.Panel5Contents, itemName, false);
                 }
             }
         }
@@ -1578,6 +1651,7 @@ namespace LMRItemTracker
                     Properties.Settings.Default.Panel3Contents = rebuildPanelContents(Properties.Settings.Default.Panel3Contents, itemName, false);
                     Properties.Settings.Default.Panel4Contents = rebuildPanelContents(Properties.Settings.Default.Panel4Contents, itemName, false);
                     Properties.Settings.Default.Panel5Contents = rebuildPanelContents(Properties.Settings.Default.Panel5Contents, itemName, false);
+                    Properties.Settings.Default.Panel6Contents = rebuildPanelContents(Properties.Settings.Default.Panel6Contents, itemName, false);
                 }
             }
         }
@@ -1586,391 +1660,391 @@ namespace LMRItemTracker
         {
             if (flagName.StartsWith("w-jewel-"))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_ankhjewel;
+                return global::LMItemTracker.Properties.Resources.Icon_ankhjewel;
             }
             else if (flagName.StartsWith("w-orb-"))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_sacredorb;
+                return global::LMItemTracker.Properties.Resources.Icon_sacredorb;
             }
             else if ("w-map-shrine".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_dragonbone_small;
+                return global::LMItemTracker.Properties.Resources.Icon_dragonbone_small;
             }
             else if (flagName.StartsWith("w-map-"))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_map;
+                return global::LMItemTracker.Properties.Resources.Icon_map;
             }
             else if ("ankh-jewels".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_ankhjewel;
+                return global::LMItemTracker.Properties.Resources.Icon_ankhjewel;
             }
             else if ("w-scanner".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_handscanner;
+                return global::LMItemTracker.Properties.Resources.Icon_handscanner;
             }
             else if ("w-grail".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_holygrail;
+                return global::LMItemTracker.Properties.Resources.Icon_holygrail;
             }
             else if ("w-doll".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_minidoll;
+                return global::LMItemTracker.Properties.Resources.Icon_minidoll;
             }
             else if ("w-magatama".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_magatamajewel;
+                return global::LMItemTracker.Properties.Resources.Icon_magatamajewel;
             }
             else if ("w-pepper".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_pepper;
+                return global::LMItemTracker.Properties.Resources.Icon_pepper;
             }
             else if ("w-woman".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_womanstatue;
+                return global::LMItemTracker.Properties.Resources.Icon_womanstatue;
             }
             else if ("w-serpent".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_serpentstaff;
+                return global::LMItemTracker.Properties.Resources.Icon_serpentstaff;
             }
             else if ("w-glove".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_glove;
+                return global::LMItemTracker.Properties.Resources.Icon_glove;
             }
             else if ("w-crucifix".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_crucifix;
+                return global::LMItemTracker.Properties.Resources.Icon_crucifix;
             }
             else if ("w-eye-truth".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_eyeoftruth;
+                return global::LMItemTracker.Properties.Resources.Icon_eyeoftruth;
             }
             else if ("w-scale".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_scalesphere;
+                return global::LMItemTracker.Properties.Resources.Icon_scalesphere;
             }
             else if ("w-gauntlet".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_gauntlet;
+                return global::LMItemTracker.Properties.Resources.Icon_gauntlet;
             }
             else if ("w-anchor".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_anchor;
+                return global::LMItemTracker.Properties.Resources.Icon_anchor;
             }
             else if ("w-book".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bookofthedead;
+                return global::LMItemTracker.Properties.Resources.Icon_bookofthedead;
             }
             else if ("w-clothes".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_fairyclothes;
+                return global::LMItemTracker.Properties.Resources.Icon_fairyclothes;
             }
             else if ("w-scriptures".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_scriptures;
+                return global::LMItemTracker.Properties.Resources.Icon_scriptures;
             }
             else if ("w-bracelet".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bracelet;
+                return global::LMItemTracker.Properties.Resources.Icon_bracelet;
             }
             else if ("w-perfume".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_perfume;
+                return global::LMItemTracker.Properties.Resources.Icon_perfume;
             }
             else if ("w-spaulder".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_spaulder;
+                return global::LMItemTracker.Properties.Resources.Icon_spaulder;
             }
             else if ("w-icecape".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_icecape;
+                return global::LMItemTracker.Properties.Resources.Icon_icecape;
             }
             else if ("w-talisman".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_talisman;
+                return global::LMItemTracker.Properties.Resources.Icon_talisman;
             }
             else if ("w-diary".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_diary;
+                return global::LMItemTracker.Properties.Resources.Icon_diary;
             }
             else if ("w-mulanatalisman".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_mulanatalisman;
+                return global::LMItemTracker.Properties.Resources.Icon_mulanatalisman;
             }
             else if ("w-dimension-key".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_dimensionalkey;
+                return global::LMItemTracker.Properties.Resources.Icon_dimensionalkey;
             }
             else if ("w-djed".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_djedpillar;
+                return global::LMItemTracker.Properties.Resources.Icon_djedpillar;
             }
             else if ("w-cog".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_cogofthesoul;
+                return global::LMItemTracker.Properties.Resources.Icon_cogofthesoul;
             }
             else if ("w-dragonbone".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_dragonbone;
+                return global::LMItemTracker.Properties.Resources.Icon_dragonbone;
             }
             else if ("w-cskull".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_crystalskull;
+                return global::LMItemTracker.Properties.Resources.Icon_crystalskull;
             }
             else if ("w-endless-key".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_keyofeternity;
+                return global::LMItemTracker.Properties.Resources.Icon_keyofeternity;
             }
             else if ("w-isispendant".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_isispendant;
+                return global::LMItemTracker.Properties.Resources.Icon_isispendant;
             }
             else if ("w-helmet".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_helmet;
+                return global::LMItemTracker.Properties.Resources.Icon_helmet;
             }
             else if ("w-grapple".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_grappleclaw;
+                return global::LMItemTracker.Properties.Resources.Icon_grappleclaw;
             }
             else if ("w-mirror".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bronzemirror;
+                return global::LMItemTracker.Properties.Resources.Icon_bronzemirror;
             }
             else if ("w-ring".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_ring;
+                return global::LMItemTracker.Properties.Resources.Icon_ring;
             }
             else if ("w-plane".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_planemodel;
+                return global::LMItemTracker.Properties.Resources.Icon_planemodel;
             }
             else if ("w-ocarina".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_philosophersocarina;
+                return global::LMItemTracker.Properties.Resources.Icon_philosophersocarina;
             }
             else if ("w-feather".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_feather;
+                return global::LMItemTracker.Properties.Resources.Icon_feather;
             }
             else if ("w-hermes".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_hermesboots;
+                return global::LMItemTracker.Properties.Resources.Icon_hermesboots;
             }
             else if ("w-fruit".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_fruitofeden;
+                return global::LMItemTracker.Properties.Resources.Icon_fruitofeden;
             }
             else if ("w-twin-statue".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_twinstatue;
+                return global::LMItemTracker.Properties.Resources.Icon_twinstatue;
             }
             else if ("w-treasures".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_treasures;
+                return global::LMItemTracker.Properties.Resources.Icon_treasures;
             }
             else if ("w-pochettekey".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_pochettekey;
+                return global::LMItemTracker.Properties.Resources.Icon_pochettekey;
             }
             else if ("w-msx2".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_msx2;
+                return global::LMItemTracker.Properties.Resources.Icon_msx2;
             }
             else if ("w-vessel".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_vessel;
+                return global::LMItemTracker.Properties.Resources.Icon_vessel;
             }
             else if ("w-water-case".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_waterproofcase;
+                return global::LMItemTracker.Properties.Resources.Icon_waterproofcase;
             }
             else if ("w-heat-case".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_heatproofcase;
+                return global::LMItemTracker.Properties.Resources.Icon_heatproofcase;
             }
             else if ("w-shell-horn".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_shellhorn;
+                return global::LMItemTracker.Properties.Resources.Icon_shellhorn;
             }
             else if ("w-main-chain".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_chainwhip;
+                return global::LMItemTracker.Properties.Resources.Icon_chainwhip;
             }
             else if ("w-main-flail".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_flailwhip;
+                return global::LMItemTracker.Properties.Resources.Icon_flailwhip;
             }
             else if ("w-main-axe".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_axe;
+                return global::LMItemTracker.Properties.Resources.Icon_axe;
             }
             else if ("w-main-knife".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_knife;
+                return global::LMItemTracker.Properties.Resources.Icon_knife;
             }
             else if ("w-main-katana".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_katana;
+                return global::LMItemTracker.Properties.Resources.Icon_katana;
             }
             else if ("w-main-keysword".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_keysword;
+                return global::LMItemTracker.Properties.Resources.Icon_keysword;
             }
             else if ("w-sub-shuriken".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_shuriken;
+                return global::LMItemTracker.Properties.Resources.Icon_shuriken;
             }
             else if ("w-sub-rshuriken".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_rollingshuriken;
+                return global::LMItemTracker.Properties.Resources.Icon_rollingshuriken;
             }
             else if ("w-sub-caltrops".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_caltrops;
+                return global::LMItemTracker.Properties.Resources.Icon_caltrops;
             }
             else if ("w-sub-spear".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_earthspear;
+                return global::LMItemTracker.Properties.Resources.Icon_earthspear;
             }
             else if ("w-sub-flare".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_flaregun;
+                return global::LMItemTracker.Properties.Resources.Icon_flaregun;
             }
             else if ("w-sub-bomb".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bomb;
+                return global::LMItemTracker.Properties.Resources.Icon_bomb;
             }
             else if ("w-sub-chakram".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_chakram;
+                return global::LMItemTracker.Properties.Resources.Icon_chakram;
             }
             else if ("w-sub-pistol".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_pistol;
+                return global::LMItemTracker.Properties.Resources.Icon_pistol;
             }
             else if ("w-seal1".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_originseal;
+                return global::LMItemTracker.Properties.Resources.Icon_originseal;
             }
             else if ("w-seal2".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_birthseal;
+                return global::LMItemTracker.Properties.Resources.Icon_birthseal;
             }
             else if ("w-seal3".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_lifeseal;
+                return global::LMItemTracker.Properties.Resources.Icon_lifeseal;
             }
             else if ("w-seal4".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_deathseal;
+                return global::LMItemTracker.Properties.Resources.Icon_deathseal;
             }
             else if ("w-soft-reader".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_reader;
+                return global::LMItemTracker.Properties.Resources.Icon_reader;
             }
             else if ("w-soft-mantra".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_mantra;
+                return global::LMItemTracker.Properties.Resources.Icon_mantra;
             }
             else if ("w-soft-torude".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_torude;
+                return global::LMItemTracker.Properties.Resources.Icon_torude;
             }
             else if ("w-soft-mekuri".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_mekuri;
+                return global::LMItemTracker.Properties.Resources.Icon_mekuri;
             }
             else if ("w-soft-miracle".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_miracle;
+                return global::LMItemTracker.Properties.Resources.Icon_miracle;
             }
             else if ("w-soft-mirai".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_mirai;
+                return global::LMItemTracker.Properties.Resources.Icon_mirai;
             }
             else if ("w-soft-yagomap".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_yagomap;
+                return global::LMItemTracker.Properties.Resources.Icon_yagomap;
             }
             else if ("w-soft-yagostr".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_yagostr;
+                return global::LMItemTracker.Properties.Resources.Icon_yagostr;
             }
             else if ("w-soft-xmailer".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_xmailer;
+                return global::LMItemTracker.Properties.Resources.Icon_xmailer;
             }
             else if ("w-soft-bunemon".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bunemon;
+                return global::LMItemTracker.Properties.Resources.Icon_bunemon;
             }
             else if ("w-soft-bunplus".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bunplus;
+                return global::LMItemTracker.Properties.Resources.Icon_bunplus;
             }
             else if ("w-soft-guild".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_guild;
+                return global::LMItemTracker.Properties.Resources.Icon_guild;
             }
             else if ("w-soft-emusic".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_emusic;
+                return global::LMItemTracker.Properties.Resources.Icon_emusic;
             }
             else if ("w-soft-beolamu".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_beolamu;
+                return global::LMItemTracker.Properties.Resources.Icon_beolamu;
             }
             else if ("w-soft-randc".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_randc;
+                return global::LMItemTracker.Properties.Resources.Icon_randc;
             }
             else if ("w-soft-deathv".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_deathv;
+                return global::LMItemTracker.Properties.Resources.Icon_deathv;
             }
             else if ("w-soft-capstar".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_capstar;
+                return global::LMItemTracker.Properties.Resources.Icon_capstar;
             }
             else if ("w-soft-move".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_move;
+                return global::LMItemTracker.Properties.Resources.Icon_move;
             }
             else if ("w-soft-bounce".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bounce;
+                return global::LMItemTracker.Properties.Resources.Icon_bounce;
             }
             else if ("w-soft-lamulana".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_lamulana;
+                return global::LMItemTracker.Properties.Resources.Icon_lamulana;
             }
             else if ("shield-buckler".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_buckler;
+                return global::LMItemTracker.Properties.Resources.Icon_buckler;
             }
             else if ("shield-silver".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_silvershield;
+                return global::LMItemTracker.Properties.Resources.Icon_silvershield;
             }
             else if ("shield-fake".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_silvershield;
+                return global::LMItemTracker.Properties.Resources.Icon_silvershield;
             }
             else if ("shield-angel".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_angelshield;
+                return global::LMItemTracker.Properties.Resources.Icon_angelshield;
             }
             else if ("w-lamp".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_lampoftime;
+                return global::LMItemTracker.Properties.Resources.Icon_lampoftime;
             }
             else if("w-forbidden".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_swimsuit;
+                return global::LMItemTracker.Properties.Resources.Icon_swimsuit;
             }
             else if("whip".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_whip;
+                return global::LMItemTracker.Properties.Resources.Icon_whip;
             }
             return null;
         }
@@ -2241,7 +2315,7 @@ namespace LMRItemTracker
             {
                 return "w-seal4";
             }
-            else if ("Glyph Reader".Equals(itemName))
+            else if ("reader.exe".Equals(itemName))
             {
                 return "w-soft-reader";
             }
@@ -2360,360 +2434,360 @@ namespace LMRItemTracker
                 {
                     return null;
                 }
-                return global::LMRItemTracker.Properties.Resources.Icon_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_blank;
             }
 
             if ("ankh-jewels".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_ankhjewel_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_ankhjewel_blank;
             }
             if ("w-scanner".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_handscanner_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_handscanner_blank;
             }
             else if ("w-grail".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_holygrail_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_holygrail_blank;
             }
             else if ("w-doll".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_minidoll_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_minidoll_blank;
             }
             else if ("w-magatama".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_magatamajewel_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_magatamajewel_blank;
             }
             else if ("w-pepper".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_pepper_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_pepper_blank;
             }
             else if ("w-woman".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_womanstatue_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_womanstatue_blank;
             }
             else if ("w-serpent".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_serpentstaff_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_serpentstaff_blank;
             }
             else if ("w-glove".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_glove_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_glove_blank;
             }
             else if ("w-crucifix".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_crucifix_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_crucifix_blank;
             }
             else if ("w-eye-truth".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_eyeoftruth_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_eyeoftruth_blank;
             }
             else if ("w-scale".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_scalesphere_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_scalesphere_blank;
             }
             else if ("w-gauntlet".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_gauntlet_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_gauntlet_blank;
             }
             else if ("w-anchor".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_anchor_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_anchor_blank;
             }
             else if ("w-book".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bookofthedead_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_bookofthedead_blank;
             }
             else if ("w-clothes".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_fairyclothes_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_fairyclothes_blank;
             }
             else if ("w-scriptures".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_scriptures_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_scriptures_blank;
             }
             else if ("w-bracelet".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bracelet_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_bracelet_blank;
             }
             else if ("w-perfume".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_perfume_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_perfume_blank;
             }
             else if ("w-spaulder".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_spaulder_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_spaulder_blank;
             }
             else if ("w-icecape".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_icecape_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_icecape_blank;
             }
             else if ("w-talisman".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_talisman_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_talisman_blank;
             }
             else if ("w-diary".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_diary_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_diary_blank;
             }
             else if ("w-mulanatalisman".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_mulanatalisman_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_mulanatalisman_blank;
             }
             else if ("w-dimension-key".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_dimensionalkey_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_dimensionalkey_blank;
             }
             else if ("w-djed".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_djedpillar_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_djedpillar_blank;
             }
             else if ("w-cog".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_cogofthesoul_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_cogofthesoul_blank;
             }
             else if ("w-dragonbone".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_dragonbone_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_dragonbone_blank;
             }
             else if ("w-cskull".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_crystalskull_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_crystalskull_blank;
             }
             else if ("w-endless-key".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_keyofeternity_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_keyofeternity_blank;
             }
             else if ("w-isispendant".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_isispendant_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_isispendant_blank;
             }
             else if ("w-helmet".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_helmet_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_helmet_blank;
             }
             else if ("w-grapple".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_grappleclaw_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_grappleclaw_blank;
             }
             else if ("w-mirror".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bronzemirror_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_bronzemirror_blank;
             }
             else if ("w-ring".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_ring_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_ring_blank;
             }
             else if ("w-plane".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_planemodel_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_planemodel_blank;
             }
             else if ("w-ocarina".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_philosophersocarina_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_philosophersocarina_blank;
             }
             else if ("w-feather".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_feather_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_feather_blank;
             }
             else if ("w-hermes".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_hermesboots_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
             }
             else if ("w-fruit".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_fruitofeden_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_fruitofeden_blank;
             }
             else if ("w-twin-statue".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_twinstatue_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_twinstatue_blank;
             }
             else if ("w-treasures".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_treasures_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_treasures_blank;
             }
             else if ("w-pochettekey".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_pochettekey_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_pochettekey_blank;
             }
             else if ("w-msx2".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_msx2_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_msx2_blank;
             }
             else if("w-lamp".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_lampoftime_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_lampoftime_blank;
             }
             else if ("w-main-axe".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_axe_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_axe_blank;
             }
             else if ("w-main-keysword".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_keysword_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_keysword_blank;
             }
             else if ("w-main-knife".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_knife_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_knife_blank;
             }
             else if ("w-main-katana".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_katana_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_katana_blank;
             }
             else if ("w-sub-shuriken".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_shuriken_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_shuriken_blank;
             }
             else if ("w-sub-rshuriken".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_rollingshuriken_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_rollingshuriken_blank;
             }
             else if ("w-sub-caltrops".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_caltrops_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_caltrops_blank;
             }
             else if ("w-sub-spear".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_earthspear_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_earthspear_blank;
             }
             else if ("w-sub-flare".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_flaregun_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_flaregun_blank;
             }
             else if ("w-sub-bomb".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bomb_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_bomb_blank;
             }
             else if ("w-sub-chakram".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_chakram_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_chakram_blank;
             }
             else if ("w-sub-pistol".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_pistol_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_pistol_blank;
             }
             else if ("w-seal1".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_originseal_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_originseal_blank;
             }
             else if ("w-seal2".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_birthseal_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_birthseal_blank;
             }
             else if ("w-seal3".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_lifeseal_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_lifeseal_blank;
             }
             else if ("w-seal4".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_deathseal_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_deathseal_blank;
             }
             else if ("w-soft-reader".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_reader_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_reader_blank;
             }
             else if ("w-soft-mantra".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_mantra_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_mantra_blank;
             }
             else if ("w-soft-torude".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_torude_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_torude_blank;
             }
             else if ("w-soft-mirai".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_mirai_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_mirai_blank;
             }
             else if ("w-soft-miracle".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_miracle_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_miracle_blank;
             }
             else if ("w-soft-yagomap".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_yagomap_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_yagomap_blank;
             }
             else if ("w-soft-yagostr".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_yagostr_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_yagostr_blank;
             }
             else if ("w-soft-xmailer".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_xmailer_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_xmailer_blank;
             }
             else if ("w-soft-bunemon".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bunemon_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_bunemon_blank;
             }
             else if ("w-soft-bunplus".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bunplus_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_bunplus_blank;
             }
             else if ("w-soft-guild".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_guild_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_guild_blank;
             }
             else if ("w-soft-emusic".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_emusic_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_emusic_blank;
             }
             else if ("w-soft-beolamu".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_beolamu_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_beolamu_blank;
             }
             else if ("w-soft-randc".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_randc_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_randc_blank;
             }
             else if ("w-soft-mekuri".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_mekuri_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_mekuri_blank;
             }
             else if ("w-soft-deathv".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_deathv_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_deathv_blank;
             }
             else if ("w-soft-capstar".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_capstar_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_capstar_blank;
             }
             else if ("w-soft-move".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_move_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_move_blank;
             }
             else if ("w-soft-bounce".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_bounce_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_bounce_blank;
             }
             else if ("w-soft-lamulana".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_lamulana_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_lamulana_blank;
             }
             else if ("shield-buckler".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_buckler_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_buckler_blank;
             }
             else if ("w-forbidden".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_swimsuit_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_swimsuit_blank;
             }
             else if ("whip".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_whip_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_whip_blank;
             }
             else if ("w-vessel".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_vessel_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_vessel_blank;
             }
             else if ("w-shell-horn".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_shellhorn_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_shellhorn_blank;
             }
             else if ("w-heat-case".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_heatproofcase_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_heatproofcase_blank;
             }
             else if ("w-water-case".Equals(flagName))
             {
-                return global::LMRItemTracker.Properties.Resources.Icon_waterproofcase_blank;
+                return global::LMItemTracker.Properties.Resources.Icon_waterproofcase_blank;
             }
             return null;
         }
@@ -3000,7 +3074,7 @@ namespace LMRItemTracker
             {
                 return swimsuit;
             }
-            if ("Glyph Reader".Equals(itemName))
+            if ("reader.exe".Equals(itemName))
             {
                 return readerPanel;
             }
@@ -3374,7 +3448,7 @@ namespace LMRItemTracker
             {
                 return deathSeal;
             }
-            if ("Glyph Reader".Equals(itemName))
+            if ("reader.exe".Equals(itemName))
             {
                 return reader;
             }
@@ -3594,11 +3668,12 @@ namespace LMRItemTracker
 
         private void restoreDefaultSettings(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Panel1Contents = "Hermes Boots,Grapple Claw,Feather,Hand Scanner,Glyph Reader,Holy Grail,mirai.exe";
-            Properties.Settings.Default.Panel2Contents = "Bronze Mirror,Fruit of Eden,Twin Statue,Key of Eternity,Helmet,Plane Model,Crystal Skull,Dimensional Key,Pochette Key,Ice Cape,Scalesphere,Cog of the Soul,Dragon Bone,Serpent Staff,Mulana Talisman,Woman Statue,Pepper,Talisman,Diary,Mini Doll,Treasures,Anchor,Key Fairy Combo,Isis' Pendant,Eye of Truth,Magatama Jewel,torude.exe,Shrine Wall Removal";
-            Properties.Settings.Default.Panel3Contents = "Origin Seal,Birth Seal,Life Seal,Death Seal,Book of the Dead,Ring,Fairy Clothes,Mobile Super X2,Scriptures,Crucifix,Perfume,Glove,Bracelet,Spaulder";
-            Properties.Settings.Default.Panel4Contents = "Whip,Knife,Axe,Katana,Shield,Gauntlet,Pistol,Shuriken,Rolling Shuriken,Caltrops,Flare Gun,Chakram,Earth Spear,Bomb";
-            Properties.Settings.Default.Panel5Contents = "Philosopher's Ocarina,Mantra/Djed Pillar,Vessel/Medicine,Key Sword,Lamp of Time,Maps,Ankh Jewels";
+            Properties.Settings.Default.Panel1Contents = "Whip,Knife,Key Sword,Axe,Katana";
+            Properties.Settings.Default.Panel2Contents = "Shuriken,Rolling Shuriken,Earth Spear,Flare Gun,Bomb,Chakram,Caltrops,Pistol,Shield,Ankh Jewels";
+            Properties.Settings.Default.Panel3Contents = "Hand Scanner,Djed Pillar,Mini Doll,Magatama Jewel,Cog of the Soul,Lamp of Time,Pochette Key,Dragon Bone,Crystal Skull,Vessel/Medicine,Pepper,Woman Statue,Key of Eternity,Serpent Staff,Talisman,Diary,Mulana Talisman";
+            Properties.Settings.Default.Panel4Contents = "Mobile Super X2,Waterproof Case,Heatproof Case,Shell Horn,Glove,Holy Grail,Isis' Pendant,Crucifix,Helmet,Grapple Claw,Bronze Mirror,Eye of Truth,Ring,Scalesphere,Gauntlet,Treasures,Anchor,Plane Model,Philosopher's Ocarina,Feather,Book of the Dead,Fairy Clothes,Scriptures,Hermes' Boots,Fruit of Eden,Twin Statue,Bracelet,Perfume,Spaulder,Dimensional Key,Ice Cape";
+            Properties.Settings.Default.Panel5Contents = "Origin Seal,Birth Seal,Life Seal,Death Seal";
+            Properties.Settings.Default.Panel6Contents = "reader.exe,xmailer.exe,yagomap.exe,yagostr.exe,bunemon.exe,bunplus.com,torude.exe,guild.exe,mantra.exe,emusic.exe,beolamu.exe,deathv.exe,randc.exe,capstar.exe,move.exe,mekuri.exe,bounce.exe,miracle.exe,mirai.exe,lamulana.exe";
             Properties.Settings.Default.BackgroundColor = System.Drawing.SystemColors.Control;
             Properties.Settings.Default.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
             Properties.Settings.Default.FormWidth = 320;
@@ -3721,15 +3796,38 @@ namespace LMRItemTracker
 
         private void updateCount(Label label, bool isAdd, int max)
         {
-            label.Invoke(new Action(() =>
+            try
             {
+                label.Invoke(new Action(() =>
+                {
+                    int existingCount = Int32.Parse(label.Text.Substring(0, label.Text.IndexOf('/')));
+                    if (isAdd)
+                    {
+                        if (existingCount < max)
+                        {
+                            label.Text = (existingCount + 1) + "/" + max;
+                            label.Refresh();
+                        }
+                    }
+                    else
+                    {
+                        if (existingCount > 0)
+                        {
+                            label.Text = (existingCount - 1) + "/" + max;
+                            label.Refresh();
+                        }
+                    }
+                }));
+            }
+            catch
+            {
+                // In case this is not a current component
                 int existingCount = Int32.Parse(label.Text.Substring(0, label.Text.IndexOf('/')));
                 if (isAdd)
                 {
                     if (existingCount < max)
                     {
                         label.Text = (existingCount + 1) + "/" + max;
-                        label.Refresh();
                     }
                 }
                 else
@@ -3737,10 +3835,9 @@ namespace LMRItemTracker
                     if (existingCount > 0)
                     {
                         label.Text = (existingCount - 1) + "/" + max;
-                        label.Refresh();
                     }
                 }
-            }));
+            }
         }
 
         private void updateAmmoCount(Label label, int newCount, int max)

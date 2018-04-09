@@ -7,7 +7,7 @@ using System.Xml.Linq;
 using System.ComponentModel;
 using System.IO;
 
-namespace LMRItemTracker
+namespace LMItemTracker
 {
     class Program
     {
@@ -37,7 +37,7 @@ namespace LMRItemTracker
             return new Dictionary<string, string>();
         }
 
-        static void changed(object cur, object old, string name, LMRItemTracker.LaMulanaItemTrackerForm laMulanaItemTrackerForm)
+        static void changed(object cur, object old, string name, LMItemTracker.LaMulanaItemTrackerForm laMulanaItemTrackerForm)
         {
             if (!name.StartsWith("byte-") && !name.StartsWith("word-"))
                 return;
@@ -89,10 +89,6 @@ namespace LMRItemTracker
             {
                 laMulanaItemTrackerForm.updateLampOfTime(displayname, (ushort)cur >= 1);
             }
-            else if (displayname.Equals("mantra-amphisbaena"))
-            {
-                laMulanaItemTrackerForm.toggleMantra(displayname, (byte)cur >= (byte)1);
-            }
             else if (displayname.StartsWith("mantra-"))
             {
                 laMulanaItemTrackerForm.toggleMantra(displayname, (byte)cur >= 4);
@@ -139,6 +135,18 @@ namespace LMRItemTracker
             {
                 laMulanaItemTrackerForm.toggleGrail(displayname, (ushort)cur >= 1);
             }
+            else if (displayname.StartsWith("w-main-") || displayname.StartsWith("w-sub-"))
+            {
+                if ((byte)old < 1 && (byte)cur >= 1)
+                {
+                    laMulanaItemTrackerForm.toggleItem(displayname, true);
+                    laMulanaItemTrackerForm.UpdateLastItem(displayname);
+                }
+                else if ((byte)old >= 1 && (byte)cur < 1)
+                {
+                    laMulanaItemTrackerForm.toggleItem(displayname, false);
+                }
+            }
             else if (displayname.StartsWith("w-"))
             {
                 if ((byte)old < 2 && (byte)cur >= 2)
@@ -155,7 +163,7 @@ namespace LMRItemTracker
 
         static bool warnedaboutaccess = false;
 
-        public static object DoStuff(LMRItemTracker.LaMulanaItemTrackerForm laMulanaItemTrackerForm, Stream namesXml)
+        public static object DoStuff(LMItemTracker.LaMulanaItemTrackerForm laMulanaItemTrackerForm, Stream namesXml)
         {
             LaMulanaRemake remake = new LaMulanaRemake();
 

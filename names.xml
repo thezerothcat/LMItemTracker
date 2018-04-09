@@ -32,7 +32,7 @@
     <item id="byte-09a" value="w-cog" />
     <item id="byte-09b" value="w-lamp" />
     <item id="byte-09c" value="w-pochettekey" />
-    <item id="byte-a8d" value="w-dragonbone" comments="custom" />
+    <item id="byte-09d" value="w-dragonbone" comments="custom" />
     <item id="byte-09e" value="w-cskull" />
     <item id="byte-09f" value="w-vessel" />
     <item id="byte-a8e" value="w-pepper" />
@@ -136,7 +136,6 @@
     <item id="byte-108" value="w-medicine" comments="2" />
     <item id="byte-10b" value="w-maternity" />
     <item id="byte-118" value="fairypointsactive" comment="fairy points work and healing fairy in credits" />
-    <item id="byte-aea" value="mantra-amphisbaena" comments="2=recited?" />
     <item id="byte-125" value="mantra-sakit" comments="4=recited" />
     <item id="byte-126" value="mantra-ellmac" comments="4=recited" />
     <item id="byte-127" value="mantra-bahamut" comments="4=recited" />
@@ -144,7 +143,7 @@
     <item id="byte-129" value="mantra-palenque" comments="4=recited" />
     <item id="byte-12a" value="mantra-baphomet" comments="4=recited" />
     <item id="byte-12b" value="mantra-tiamat" comments="4=recited" />
-    <item id="byte-124" value="mantra-keysword" comments="4=keysword empowered?" />
+    <item id="byte-124" value="mantra-amphisbaena" comments="4=keysword empowered?" />
 	<item id="byte-2e6" value="w-msx2" comment="definitely set when you buy it but goes 2 then 1, I don't even" />
     <item id="byte-2e5" value="rosetta-count" />
     <item id="byte-2ea" value="learnt-lamulanese" comments="1" />

@@ -1,4 +1,4 @@
-﻿namespace LMRItemTracker.Properties {
+﻿namespace LMItemTracker.Properties {
     
     
     // This class allows you to handle specific events on the settings class:

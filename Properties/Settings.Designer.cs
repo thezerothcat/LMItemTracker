@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LMRItemTracker.Properties {
+namespace LMItemTracker.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,7 +25,7 @@ namespace LMRItemTracker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Hermes Boots,Grapple Claw,Feather,Hand Scanner,Glyph Reader,Holy Grail,mirai.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Whip,Knife,Key Sword,Axe,Katana")]
         public string Panel1Contents {
             get {
                 return ((string)(this["Panel1Contents"]));
@@ -37,7 +37,8 @@ namespace LMRItemTracker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"Bronze Mirror,Fruit of Eden,Twin Statue,Key of Eternity,Helmet,Plane Model,Crystal Skull,Dimensional Key,Pochette Key,Ice Cape,Scalesphere,Cog of the Soul,Dragon Bone,Serpent Staff,Mulana Talisman,Woman Statue,Pepper,Talisman,Diary,Mini Doll,Treasures,Anchor,Key Fairy Combo,Isis' Pendant,Eye of Truth,Magatama Jewel,torude.exe,Shrine Wall Removal")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Shuriken,Rolling Shuriken,Earth Spear,Flare Gun,Bomb,Chakram,Caltrops,Pistol,Shie" +
+            "ld,Ankh Jewels")]
         public string Panel2Contents {
             get {
                 return ((string)(this["Panel2Contents"]));
@@ -49,8 +50,9 @@ namespace LMRItemTracker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Origin Seal,Birth Seal,Life Seal,Death Seal,Book of the Dead,Ring,Fairy Clothes,M" +
-            "obile Super X2,Scriptures,Crucifix,Perfume,Glove,Bracelet,Spaulder")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Hand Scanner,Djed Pillar,Mini Doll,Magatama Jewel,Cog of the Soul,Lamp of Time,Po" +
+            "chette Key,Dragon Bone,Crystal Skull,Vessel/Medicine,Pepper,Woman Statue,Key of " +
+            "Eternity,Serpent Staff,Talisman,Diary,Mulana Talisman")]
         public string Panel3Contents {
             get {
                 return ((string)(this["Panel3Contents"]));
@@ -62,8 +64,7 @@ namespace LMRItemTracker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Whip,Knife,Axe,Katana,Shield,Gauntlet,Pistol,Shuriken,Rolling Shuriken,Caltrops,F" +
-            "lare Gun,Chakram,Earth Spear,Bomb")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"Mobile Super X2,Waterproof Case,Heatproof Case,Shell Horn,Glove,Holy Grail,Isis' Pendant,Crucifix,Helmet,Grapple Claw,Bronze Mirror,Eye of Truth,Ring,Scalesphere,Gauntlet,Treasures,Anchor,Plane Model,Philosopher's Ocarina,Feather,Book of the Dead,Fairy Clothes,Scriptures,Hermes' Boots,Fruit of Eden,Twin Statue,Bracelet,Perfume,Spaulder,Dimensional Key,Ice Cape")]
         public string Panel4Contents {
             get {
                 return ((string)(this["Panel4Contents"]));
@@ -75,8 +76,7 @@ namespace LMRItemTracker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Philosopher\'s Ocarina,Mantra/Djed Pillar,Vessel/Medicine,Key Sword,Lamp of Time,M" +
-            "aps,Ankh Jewels")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Origin Seal,Birth Seal,Life Seal,Death Seal")]
         public string Panel5Contents {
             get {
                 return ((string)(this["Panel5Contents"]));
@@ -172,7 +172,7 @@ namespace LMRItemTracker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("shaded")]
+        [global::System.Configuration.DefaultSettingValueAttribute("hide")]
         public string BackgroundMode {
             get {
                 return ((string)(this["BackgroundMode"]));
@@ -191,6 +191,20 @@ namespace LMRItemTracker.Properties {
             }
             set {
                 this["ShowAmmoCount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("reader.exe,xmailer.exe,yagomap.exe,yagostr.exe,bunemon.exe,bunplus.com,torude.exe" +
+            ",guild.exe,mantra.exe,emusic.exe,beolamu.exe,deathv.exe,randc.exe,capstar.exe,mo" +
+            "ve.exe,mekuri.exe,bounce.exe,miracle.exe,mirai.exe,lamulana.exe")]
+        public string Panel6Contents {
+            get {
+                return ((string)(this["Panel6Contents"]));
+            }
+            set {
+                this["Panel6Contents"] = value;
             }
         }
     }

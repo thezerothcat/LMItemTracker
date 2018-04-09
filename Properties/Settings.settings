@@ -1,21 +1,21 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LMRItemTracker.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LMItemTracker.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="Panel1Contents" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Hermes Boots,Grapple Claw,Feather,Hand Scanner,Glyph Reader,Holy Grail,mirai.exe</Value>
+      <Value Profile="(Default)">Whip,Knife,Key Sword,Axe,Katana</Value>
     </Setting>
     <Setting Name="Panel2Contents" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Bronze Mirror,Fruit of Eden,Twin Statue,Key of Eternity,Helmet,Plane Model,Crystal Skull,Dimensional Key,Pochette Key,Ice Cape,Scalesphere,Cog of the Soul,Dragon Bone,Serpent Staff,Mulana Talisman,Woman Statue,Pepper,Talisman,Diary,Mini Doll,Treasures,Anchor,Key Fairy Combo,Isis' Pendant,Eye of Truth,Magatama Jewel,torude.exe,Shrine Wall Removal</Value>
+      <Value Profile="(Default)">Shuriken,Rolling Shuriken,Earth Spear,Flare Gun,Bomb,Chakram,Caltrops,Pistol,Shield,Ankh Jewels</Value>
     </Setting>
     <Setting Name="Panel3Contents" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Origin Seal,Birth Seal,Life Seal,Death Seal,Book of the Dead,Ring,Fairy Clothes,Mobile Super X2,Scriptures,Crucifix,Perfume,Glove,Bracelet,Spaulder</Value>
+      <Value Profile="(Default)">Hand Scanner,Djed Pillar,Mini Doll,Magatama Jewel,Cog of the Soul,Lamp of Time,Pochette Key,Dragon Bone,Crystal Skull,Vessel/Medicine,Pepper,Woman Statue,Key of Eternity,Serpent Staff,Talisman,Diary,Mulana Talisman</Value>
     </Setting>
     <Setting Name="Panel4Contents" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Whip,Knife,Axe,Katana,Shield,Gauntlet,Pistol,Shuriken,Rolling Shuriken,Caltrops,Flare Gun,Chakram,Earth Spear,Bomb</Value>
+      <Value Profile="(Default)">Mobile Super X2,Waterproof Case,Heatproof Case,Shell Horn,Glove,Holy Grail,Isis' Pendant,Crucifix,Helmet,Grapple Claw,Bronze Mirror,Eye of Truth,Ring,Scalesphere,Gauntlet,Treasures,Anchor,Plane Model,Philosopher's Ocarina,Feather,Book of the Dead,Fairy Clothes,Scriptures,Hermes' Boots,Fruit of Eden,Twin Statue,Bracelet,Perfume,Spaulder,Dimensional Key,Ice Cape</Value>
     </Setting>
     <Setting Name="Panel5Contents" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Philosopher's Ocarina,Mantra/Djed Pillar,Vessel/Medicine,Key Sword,Lamp of Time,Maps,Ankh Jewels</Value>
+      <Value Profile="(Default)">Origin Seal,Birth Seal,Life Seal,Death Seal</Value>
     </Setting>
     <Setting Name="BackgroundColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Control</Value>
@@ -39,10 +39,13 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="BackgroundMode" Type="System.String" Scope="User">
-      <Value Profile="(Default)">shaded</Value>
+      <Value Profile="(Default)">hide</Value>
     </Setting>
     <Setting Name="ShowAmmoCount" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Panel6Contents" Type="System.String" Scope="User">
+      <Value Profile="(Default)">reader.exe,xmailer.exe,yagomap.exe,yagostr.exe,bunemon.exe,bunplus.com,torude.exe,guild.exe,mantra.exe,emusic.exe,beolamu.exe,deathv.exe,randc.exe,capstar.exe,move.exe,mekuri.exe,bounce.exe,miracle.exe,mirai.exe,lamulana.exe</Value>
     </Setting>
   </Settings>
 </SettingsFile>
