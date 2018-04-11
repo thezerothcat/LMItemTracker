@@ -64,6 +64,7 @@ namespace LMItemTracker
             this.addItemPanel3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addItemPanel4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addItemPanel5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addItemPanel6ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uncollectedItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shadedImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -183,6 +184,7 @@ namespace LMItemTracker
             this.maps = new System.Windows.Forms.PictureBox();
             this.ankhJewelPanel = new System.Windows.Forms.Panel();
             this.ankhJewels = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.bossPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.amphisbaena = new System.Windows.Forms.PictureBox();
             this.sakit = new System.Windows.Forms.PictureBox();
@@ -192,8 +194,6 @@ namespace LMItemTracker
             this.palenque = new System.Windows.Forms.PictureBox();
             this.baphomet = new System.Windows.Forms.PictureBox();
             this.tiamat = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.addItemPanel6ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shieldsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buckler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.angelShield)).BeginInit();
@@ -401,7 +401,7 @@ namespace LMItemTracker
             // fakeSilverShield
             // 
             this.fakeSilverShield.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fakeSilverShield.Image = global::LMItemTracker.Properties.Resources.Icon_silvershield;
+            this.fakeSilverShield.Image = global::LMItemTracker.Properties.Resources.Icon_silvershield2;
             this.fakeSilverShield.Location = new System.Drawing.Point(0, 0);
             this.fakeSilverShield.Name = "fakeSilverShield";
             this.fakeSilverShield.Size = new System.Drawing.Size(40, 40);
@@ -555,32 +555,38 @@ namespace LMItemTracker
             // addItemPanel1ToolStripMenuItem
             // 
             this.addItemPanel1ToolStripMenuItem.Name = "addItemPanel1ToolStripMenuItem";
-            this.addItemPanel1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addItemPanel1ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.addItemPanel1ToolStripMenuItem.Text = "Panel 1";
             // 
             // addItemPanel2ToolStripMenuItem
             // 
             this.addItemPanel2ToolStripMenuItem.Name = "addItemPanel2ToolStripMenuItem";
-            this.addItemPanel2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addItemPanel2ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.addItemPanel2ToolStripMenuItem.Text = "Panel 2";
             // 
             // addItemPanel3ToolStripMenuItem
             // 
             this.addItemPanel3ToolStripMenuItem.Name = "addItemPanel3ToolStripMenuItem";
-            this.addItemPanel3ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addItemPanel3ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.addItemPanel3ToolStripMenuItem.Text = "Panel 3";
             // 
             // addItemPanel4ToolStripMenuItem
             // 
             this.addItemPanel4ToolStripMenuItem.Name = "addItemPanel4ToolStripMenuItem";
-            this.addItemPanel4ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addItemPanel4ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.addItemPanel4ToolStripMenuItem.Text = "Panel 4";
             // 
             // addItemPanel5ToolStripMenuItem
             // 
             this.addItemPanel5ToolStripMenuItem.Name = "addItemPanel5ToolStripMenuItem";
-            this.addItemPanel5ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addItemPanel5ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.addItemPanel5ToolStripMenuItem.Text = "Panel 5";
+            // 
+            // addItemPanel6ToolStripMenuItem
+            // 
+            this.addItemPanel6ToolStripMenuItem.Name = "addItemPanel6ToolStripMenuItem";
+            this.addItemPanel6ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.addItemPanel6ToolStripMenuItem.Text = "Panel 6";
             // 
             // removeItemToolStripMenuItem
             // 
@@ -1883,6 +1889,17 @@ namespace LMItemTracker
             this.ankhJewels.TabIndex = 29;
             this.ankhJewels.TabStop = false;
             // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.AutoSize = true;
+            this.flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mainPanel.SetFlowBreak(this.flowLayoutPanel6, true);
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(10, 550);
+            this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel6.TabIndex = 120;
+            // 
             // bossPanel
             // 
             this.bossPanel.AutoSize = true;
@@ -1984,27 +2001,10 @@ namespace LMItemTracker
             this.tiamat.TabIndex = 19;
             this.tiamat.TabStop = false;
             // 
-            // flowLayoutPanel6
-            // 
-            this.flowLayoutPanel6.AutoSize = true;
-            this.flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mainPanel.SetFlowBreak(this.flowLayoutPanel6, true);
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(10, 550);
-            this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(0, 0);
-            this.flowLayoutPanel6.TabIndex = 120;
-            // 
-            // addItemPanel6ToolStripMenuItem
-            // 
-            this.addItemPanel6ToolStripMenuItem.Name = "addItemPanel6ToolStripMenuItem";
-            this.addItemPanel6ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addItemPanel6ToolStripMenuItem.Text = "Panel 6";
-            // 
             // LaMulanaItemTrackerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(304, 818);
+            this.ClientSize = new System.Drawing.Size(304, 660);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.menu);
             this.HelpButton = true;

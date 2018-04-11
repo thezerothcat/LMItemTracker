@@ -37,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -703,6 +704,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Icon_holygrail2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_silvershield2.png" />
   </ItemGroup>
   <Import Project="EyeOfTruth.Shared\EyeOfTruth.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

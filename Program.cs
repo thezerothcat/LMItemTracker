@@ -80,7 +80,7 @@ namespace LMItemTracker
             }
             else if (displayname.StartsWith("recent-"))
             {
-                if ((byte)old < 2 && (byte)cur >= 2)
+                if ((byte)old < 1 && (byte)cur >= 1)
                 {
                     laMulanaItemTrackerForm.UpdateLastItem("shield-" + displayname.Split('-')[1]);
                 }
@@ -134,6 +134,19 @@ namespace LMItemTracker
             else if (displayname.Equals("invtr-grailfull") || displayname.Equals("invtr-grailbr"))
             {
                 laMulanaItemTrackerForm.toggleGrail(displayname, (ushort)cur >= 1);
+            }
+            else if (displayname.StartsWith("inv-"))
+            {
+                string updatedName = displayname.Replace("inv-", "");
+                if ((ushort)cur >= 1)
+                {
+                    laMulanaItemTrackerForm.toggleItem(updatedName, true);
+                    laMulanaItemTrackerForm.UpdateLastItem(updatedName);
+                }
+                else
+                {
+                    laMulanaItemTrackerForm.toggleItem(updatedName, false);
+                }
             }
             else if (displayname.StartsWith("w-main-") || displayname.StartsWith("w-sub-"))
             {
