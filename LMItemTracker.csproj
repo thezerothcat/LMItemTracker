@@ -738,6 +738,54 @@
   <ItemGroup>
     <None Include="Resources\WEDJET.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_amphisbaena.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_amphisbaena_blank.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_bahamut.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_bahamut_blank.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_baphomet.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_baphomet_blank.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_ellmac.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_ellmac_blank.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_palenque.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_palenque_blank.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_sakit.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_sakit_blank.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_tiamat.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_tiamat_blank.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_viy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boss_viy_blank.jpg" />
+  </ItemGroup>
   <Import Project="EyeOfTruth.Shared\EyeOfTruth.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

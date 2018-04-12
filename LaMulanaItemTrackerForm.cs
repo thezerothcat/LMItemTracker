@@ -252,7 +252,7 @@ namespace LMItemTracker
                 }
             }
 
-            if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+            if (!Properties.Settings.Default.BackgroundMode.Equals("shaded"))
             {
                 foreach (Control control in bossPanel.Controls)
                 {
@@ -1269,10 +1269,17 @@ namespace LMItemTracker
                 }
                 else
                 {
-                    setBackgroundImage(amphisbaena, global::LMItemTracker.Properties.Resources.Boss_amphisbaena_blank);
+                    if (Properties.Settings.Default.BackgroundMode.Equals("blank"))
+                    {
+                        setBackgroundImage(amphisbaena, null);
+                    }
+                    else
+                    {
+                        setBackgroundImage(amphisbaena, global::LMItemTracker.Properties.Resources.Boss_amphisbaena_blank);
+                    }
                 }
 
-                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                if (!Properties.Settings.Default.BackgroundMode.Equals("shaded"))
                 {
                     toggleVisibility(amphisbaena, isAdd);
                 }
@@ -1285,10 +1292,17 @@ namespace LMItemTracker
                 }
                 else
                 {
-                    setBackgroundImage(sakit, global::LMItemTracker.Properties.Resources.Boss_sakit_blank);
+                    if (Properties.Settings.Default.BackgroundMode.Equals("blank"))
+                    {
+                        setBackgroundImage(sakit, null);
+                    }
+                    else
+                    {
+                        setBackgroundImage(sakit, global::LMItemTracker.Properties.Resources.Boss_sakit_blank);
+                    }
                 }
 
-                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                if (!Properties.Settings.Default.BackgroundMode.Equals("shaded"))
                 {
                     toggleVisibility(sakit, isAdd);
                 }
@@ -1301,10 +1315,17 @@ namespace LMItemTracker
                 }
                 else
                 {
-                    setBackgroundImage(ellmac, global::LMItemTracker.Properties.Resources.Boss_ellmac_blank);
+                    if (Properties.Settings.Default.BackgroundMode.Equals("blank"))
+                    {
+                        setBackgroundImage(ellmac, null);
+                    }
+                    else
+                    {
+                        setBackgroundImage(ellmac, global::LMItemTracker.Properties.Resources.Boss_ellmac_blank);
+                    }
                 }
 
-                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                if (!Properties.Settings.Default.BackgroundMode.Equals("shaded"))
                 {
                     toggleVisibility(ellmac, isAdd);
                 }
@@ -1317,10 +1338,17 @@ namespace LMItemTracker
                 }
                 else
                 {
-                    setBackgroundImage(bahamut, global::LMItemTracker.Properties.Resources.Boss_bahamut_blank);
+                    if (Properties.Settings.Default.BackgroundMode.Equals("blank"))
+                    {
+                        setBackgroundImage(bahamut, null);
+                    }
+                    else
+                    {
+                        setBackgroundImage(bahamut, global::LMItemTracker.Properties.Resources.Boss_bahamut_blank);
+                    }
                 }
 
-                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                if (!Properties.Settings.Default.BackgroundMode.Equals("shaded"))
                 {
                     toggleVisibility(bahamut, isAdd);
                 }
@@ -1333,10 +1361,17 @@ namespace LMItemTracker
                 }
                 else
                 {
-                    setBackgroundImage(viy, global::LMItemTracker.Properties.Resources.Boss_viy_blank);
+                    if (Properties.Settings.Default.BackgroundMode.Equals("blank"))
+                    {
+                        setBackgroundImage(viy, null);
+                    }
+                    else
+                    {
+                        setBackgroundImage(viy, global::LMItemTracker.Properties.Resources.Boss_viy_blank);
+                    }
                 }
 
-                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                if (!Properties.Settings.Default.BackgroundMode.Equals("shaded"))
                 {
                     toggleVisibility(viy, isAdd);
                 }
@@ -1349,10 +1384,17 @@ namespace LMItemTracker
                 }
                 else
                 {
-                    setBackgroundImage(palenque, global::LMItemTracker.Properties.Resources.Boss_palenque_blank);
+                    if (Properties.Settings.Default.BackgroundMode.Equals("blank"))
+                    {
+                        setBackgroundImage(palenque, null);
+                    }
+                    else
+                    {
+                        setBackgroundImage(palenque, global::LMItemTracker.Properties.Resources.Boss_palenque_blank);
+                    }
                 }
 
-                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                if (!Properties.Settings.Default.BackgroundMode.Equals("shaded"))
                 {
                     toggleVisibility(palenque, isAdd);
                 }
@@ -1365,10 +1407,17 @@ namespace LMItemTracker
                 }
                 else
                 {
-                    setBackgroundImage(baphomet, global::LMItemTracker.Properties.Resources.Boss_baphomet_blank);
+                    if (Properties.Settings.Default.BackgroundMode.Equals("blank"))
+                    {
+                        setBackgroundImage(baphomet, null);
+                    }
+                    else
+                    {
+                        setBackgroundImage(baphomet, global::LMItemTracker.Properties.Resources.Boss_baphomet_blank);
+                    }
                 }
 
-                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                if (!Properties.Settings.Default.BackgroundMode.Equals("shaded"))
                 {
                     toggleVisibility(baphomet, isAdd);
                 }
@@ -1381,10 +1430,17 @@ namespace LMItemTracker
                 }
                 else
                 {
-                    setBackgroundImage(tiamat, global::LMItemTracker.Properties.Resources.Boss_tiamat_blank);
+                    if (Properties.Settings.Default.BackgroundMode.Equals("blank"))
+                    {
+                        setBackgroundImage(tiamat, null);
+                    }
+                    else
+                    {
+                        setBackgroundImage(tiamat, global::LMItemTracker.Properties.Resources.Boss_tiamat_blank);
+                    }
                 }
 
-                if (Properties.Settings.Default.BackgroundMode.Equals("hide"))
+                if (!Properties.Settings.Default.BackgroundMode.Equals("shaded"))
                 {
                     toggleVisibility(tiamat, isAdd);
                 }

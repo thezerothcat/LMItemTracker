@@ -607,13 +607,14 @@ namespace LMItemTracker
             this.addItemPanel5ToolStripMenuItem,
             this.addItemPanel6ToolStripMenuItem});
             this.addItemToolStripMenuItem.Name = "addItemToolStripMenuItem";
-            this.addItemToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.addItemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addItemToolStripMenuItem.Text = "Add Item";
+            this.addItemToolStripMenuItem.Visible = false;
             // 
             // addItemPanel1ToolStripMenuItem
             // 
             this.addItemPanel1ToolStripMenuItem.Name = "addItemPanel1ToolStripMenuItem";
-            this.addItemPanel1ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.addItemPanel1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addItemPanel1ToolStripMenuItem.Text = "Panel 1";
             // 
             // addItemPanel2ToolStripMenuItem
@@ -649,8 +650,9 @@ namespace LMItemTracker
             // removeItemToolStripMenuItem
             // 
             this.removeItemToolStripMenuItem.Name = "removeItemToolStripMenuItem";
-            this.removeItemToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.removeItemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeItemToolStripMenuItem.Text = "Remove Item";
+            this.removeItemToolStripMenuItem.Visible = false;
             // 
             // uncollectedItemsToolStripMenuItem
             // 
