@@ -63,6 +63,26 @@ namespace LMItemTracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ABUTO {
+            get {
+                object obj = ResourceManager.GetObject("ABUTO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BAHRUN {
+            get {
+                object obj = ResourceManager.GetObject("BAHRUN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Boss_amphisbaena {
             get {
                 object obj = ResourceManager.GetObject("Boss_amphisbaena", resourceCulture);
@@ -2196,6 +2216,66 @@ namespace LMItemTracker.Properties {
         internal static System.Drawing.Bitmap Icon_yagostr_blank {
             get {
                 object obj = ResourceManager.GetObject("Icon_yagostr_blank", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LAMULANA {
+            get {
+                object obj = ResourceManager.GetObject("LAMULANA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MARDUK {
+            get {
+                object obj = ResourceManager.GetObject("MARDUK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MU {
+            get {
+                object obj = ResourceManager.GetObject("MU", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SABBAT {
+            get {
+                object obj = ResourceManager.GetObject("SABBAT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VIY {
+            get {
+                object obj = ResourceManager.GetObject("VIY", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WEDJET {
+            get {
+                object obj = ResourceManager.GetObject("WEDJET", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

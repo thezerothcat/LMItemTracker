@@ -754,10 +754,34 @@
   <data name="Icon_silvershield2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_silvershield2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ABUTO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ABUTO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BAHRUN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BAHRUN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Icon_medicineofthemind_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_medicineofthemind_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Icon_medicineofthemind_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_medicineofthemind_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LAMULANA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LAMULANA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MARDUK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MARDUK.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MU.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SABBAT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SABBAT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VIY" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VIY.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WEDJET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WEDJET.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -714,6 +714,30 @@
   <ItemGroup>
     <None Include="Resources\Icon_medicineofthemind_red.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ABUTO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BAHRUN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LAMULANA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MARDUK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MU.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SABBAT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VIY.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WEDJET.png" />
+  </ItemGroup>
   <Import Project="EyeOfTruth.Shared\EyeOfTruth.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

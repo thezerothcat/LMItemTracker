@@ -21,16 +21,16 @@
       <Value Profile="(Default)">Control</Value>
     </Setting>
     <Setting Name="TextColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">70, 70, 200</Value>
+      <Value Profile="(Default)">White</Value>
     </Setting>
     <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="FormWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">320</Value>
+      <Value Profile="(Default)">356</Value>
     </Setting>
     <Setting Name="FormHeight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">662</Value>
+      <Value Profile="(Default)">852</Value>
     </Setting>
     <Setting Name="ShowLastItem" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

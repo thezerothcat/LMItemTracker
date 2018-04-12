@@ -20,13 +20,6 @@ namespace LMItemTracker
             this.mekuriCollected = false;
             this.gameStarted = false;
 
-            this.buckler.TabIndex = 3;
-            this.fakeSilverShield.TabIndex = 2;
-            this.silverShield.TabIndex = 1;
-            this.angelShield.TabIndex = 0;
-            this.whip.TabIndex = 2;
-            this.chainWhip.TabIndex = 1;
-            this.flailWhip.TabIndex = 0;
             this.vesselNotFound.TabIndex = 1;
             this.vessel.TabIndex = 0;
             this.lampOfTimeNotFound.TabIndex = 1;
@@ -265,6 +258,10 @@ namespace LMItemTracker
                 {
                     control.Visible = false;
                 }
+                foreach (Control control in mantraPanel.Controls)
+                {
+                    control.Visible = false;
+                }
             }
         }
 
@@ -285,6 +282,13 @@ namespace LMItemTracker
                 }
                 else if("Whip".Equals(item))
                 {
+                    whipsPanel.Controls.Add(whip);
+                    whipsPanel.Controls.Remove(chainWhip);
+                    whipsPanel.Controls.Remove(flailWhip);
+
+                    whipCollected = true;
+                    chainWhipCollected = false;
+
                     blankImage.BackgroundImage = null;
                     blankImage.Image = getFoundImage(getFlagName(item));
                 }
@@ -309,14 +313,14 @@ namespace LMItemTracker
                 }
                 if("Shield".Equals(item))
                 {
-                    fakeSilverShield.Visible = false;
-                    silverShield.Visible = false;
-                    angelShield.Visible = false;
+                    bucklerCollected = false;
+                    fakeShieldCollected = false;
+                    silverShieldCollected = false;
 
-                    shieldsPanel.Controls.SetChildIndex(buckler, 3);
-                    shieldsPanel.Controls.SetChildIndex(silverShield, 2);
-                    shieldsPanel.Controls.SetChildIndex(fakeSilverShield, 1);
-                    shieldsPanel.Controls.SetChildIndex(angelShield, 0);
+                    shieldsPanel.Controls.Remove(buckler);
+                    shieldsPanel.Controls.Remove(fakeSilverShield);
+                    shieldsPanel.Controls.Remove(silverShield);
+                    shieldsPanel.Controls.Remove(angelShield);
                 }
             }
         }
@@ -718,17 +722,19 @@ namespace LMItemTracker
             {
                 if (isAdd && Properties.Settings.Default.BackgroundMode.Equals("hide"))
                 {
-                    toggleVisibility(GetControl("Whip"), true);
+                    toggleVisibility(whipsPanel, true);
                 }
-                toggleVisibility(chainWhip, isAdd);
+                chainWhipCollected = isAdd;
+                updateWhips();
             }
             else if ("w-main-flail".Equals(flagName))
             {
                 if (isAdd && Properties.Settings.Default.BackgroundMode.Equals("hide"))
                 {
-                    toggleVisibility(GetControl("Whip"), true);
+                    toggleVisibility(whipsPanel, true);
                 }
-                toggleVisibility(flailWhip, isAdd);
+                flailWhipCollected = isAdd;
+                updateWhips();
             }
             else if ("w-main-keysword".Equals(flagName))
             {
@@ -1000,38 +1006,109 @@ namespace LMItemTracker
                 {
                     toggleVisibility(shieldsPanel, true);
                 }
+                bucklerCollected = isAdd;
                 SetImage(flagName, isAdd);
+                updateShields();
             }
             else if ("shield-silver".Equals(flagName))
             {
                 if (isAdd && Properties.Settings.Default.BackgroundMode.Equals("hide"))
                 {
                     toggleVisibility(shieldsPanel, true);
-                    toggleVisibility(fakeSilverShield, false);
-                    toggleVisibility(buckler, false);
                 }
-                toggleVisibility(silverShield, isAdd);
+                silverShieldCollected = isAdd;
+                updateShields();
             }
             else if ("shield-fake".Equals(flagName))
             {
                 if (isAdd && Properties.Settings.Default.BackgroundMode.Equals("hide"))
                 {
                     toggleVisibility(shieldsPanel, true);
-                    toggleVisibility(buckler, false);
                 }
-                toggleVisibility(fakeSilverShield, isAdd);
+                fakeShieldCollected = isAdd;
+                updateShields();
             }
             else if ("shield-angel".Equals(flagName))
             {
                 if (isAdd && Properties.Settings.Default.BackgroundMode.Equals("hide"))
                 {
                     toggleVisibility(shieldsPanel, true);
-                    toggleVisibility(silverShield, false);
-                    toggleVisibility(fakeSilverShield, false);
-                    toggleVisibility(buckler, false);
                 }
-                toggleVisibility(angelShield, isAdd);
+                angelShieldCollected = isAdd;
+                updateShields();
             }
+        }
+
+        private void updateWhips()
+        {
+            whipsPanel.Invoke(new Action(() =>
+            {
+                if (flailWhipCollected)
+                {
+                    whipsPanel.Controls.Add(flailWhip);
+                }
+                else
+                {
+                    whipsPanel.Controls.Remove(flailWhip);
+                }
+                if (chainWhipCollected)
+                {
+                    whipsPanel.Controls.Add(chainWhip);
+                }
+                else
+                {
+                    whipsPanel.Controls.Remove(chainWhip);
+                }
+                if (whipCollected)
+                {
+                    whipsPanel.Controls.Add(whip);
+                }
+                else
+                {
+                    whipsPanel.Controls.Remove(whip);
+                }
+                whipsPanel.Refresh();
+            }));
+        }
+
+        private void updateShields()
+        {
+            shieldsPanel.Invoke(new Action(() =>
+            {
+                if (angelShieldCollected)
+                {
+                    shieldsPanel.Controls.Add(angelShield);
+                }
+                else
+                {
+                    shieldsPanel.Controls.Remove(angelShield);
+                }
+                if (silverShieldCollected)
+                {
+                    shieldsPanel.Controls.Add(silverShield);
+                }
+                else
+                {
+                    shieldsPanel.Controls.Remove(silverShield);
+                }
+                if (fakeShieldCollected)
+                {
+                    shieldsPanel.Controls.Add(fakeSilverShield);
+                }
+                else
+                {
+                    shieldsPanel.Controls.Remove(fakeSilverShield);
+                }
+                if (bucklerCollected)
+                {
+                    shieldsPanel.Controls.Add(buckler);
+                }
+                else
+                {
+                    shieldsPanel.Controls.Remove(buckler);
+                }
+                shieldsPanel.Refresh();
+            }));
         }
 
         internal void updateLampOfTime(string displayname, bool isAdd)
@@ -1316,7 +1393,13 @@ namespace LMItemTracker
 
         public void toggleWhip(Boolean isAdd)
         {
+            if (isAdd && Properties.Settings.Default.BackgroundMode.Equals("hide"))
+            {
+                toggleVisibility(shieldsPanel, true);
+            }
+            whipCollected = isAdd;
             SetImage("whip", isAdd);
+            updateWhips();
         }
 
         public void toggleMap(string flagName, Boolean isAdd)
@@ -1340,9 +1423,9 @@ namespace LMItemTracker
         {
             if ("mantra-amphisbaena".Equals(flagName))
             {
+                toggleVisibility(lamulanaMantra, isAdd);
                 if (isAdd)
                 {
-                    SetImage(amphisbaena, global::LMItemTracker.Properties.Resources.Boss_sealed);
                     this.mantrasRecited = true;
                     if (this.keySwordCollected)
                     {
@@ -1351,7 +1434,6 @@ namespace LMItemTracker
                 }
                 else
                 {
-                    SetImage(amphisbaena, null);
                     this.mantrasRecited = false;
                     if (this.keySwordCollected)
                     {
@@ -1361,80 +1443,31 @@ namespace LMItemTracker
             }
             else if ("mantra-sakit".Equals(flagName))
             {
-                if (isAdd)
-                {
-                    SetImage(sakit, global::LMItemTracker.Properties.Resources.Boss_sealed);
-                }
-                else
-                {
-                    SetImage(sakit, null);
-                }
+                toggleVisibility(abuto, isAdd);
             }
             else if ("mantra-ellmac".Equals(flagName))
             {
-                if (isAdd)
-                {
-                    SetImage(ellmac, global::LMItemTracker.Properties.Resources.Boss_sealed);
-                }
-                else
-                {
-                    SetImage(ellmac, null);
-                }
+                toggleVisibility(wedjet, isAdd);
             }
             else if ("mantra-bahamut".Equals(flagName))
             {
-                if (isAdd)
-                {
-                    SetImage(bahamut, global::LMItemTracker.Properties.Resources.Boss_sealed);
-                }
-                else
-                {
-                    SetImage(bahamut, null);
-                }
+                toggleVisibility(bahrun, isAdd);
             }
             else if ("mantra-viy".Equals(flagName))
             {
-                if (isAdd)
-                {
-                    SetImage(viy, global::LMItemTracker.Properties.Resources.Boss_sealed);
-                }
-                else
-                {
-                    SetImage(viy, null);
-                }
+                toggleVisibility(viyMantra, isAdd);
             }
             else if ("mantra-palenque".Equals(flagName))
             {
-                if (isAdd)
-                {
-                    SetImage(palenque, global::LMItemTracker.Properties.Resources.Boss_sealed);
-                }
-                else
-                {
-                    SetImage(palenque, null);
-                }
+                toggleVisibility(mu, isAdd);
             }
             else if ("mantra-baphomet".Equals(flagName))
             {
-                if (isAdd)
-                {
-                    SetImage(baphomet, global::LMItemTracker.Properties.Resources.Boss_sealed);
-                }
-                else
-                {
-                    SetImage(baphomet, null);
-                }
+                toggleVisibility(sabbat, isAdd);
             }
             else if ("mantra-tiamat".Equals(flagName))
             {
-                if (isAdd)
-                {
-                    SetImage(tiamat, global::LMItemTracker.Properties.Resources.Boss_sealed);
-                }
-                else
-                {
-                    SetImage(tiamat, null);
-                }
+                toggleVisibility(marduk, isAdd);
             }
         }
 
@@ -3751,22 +3784,30 @@ namespace LMItemTracker
             Properties.Settings.Default.Panel4Contents = "Mobile Super X2,Waterproof Case,Heatproof Case,Shell Horn,Glove,Holy Grail,Isis' Pendant,Crucifix,Helmet,Grapple Claw,Bronze Mirror,Eye of Truth,Ring,Scalesphere,Gauntlet,Treasures,Anchor,Plane Model,Philosopher's Ocarina,Feather,Book of the Dead,Fairy Clothes,Scriptures,Hermes' Boots,Fruit of Eden,Twin Statue,Bracelet,Perfume,Spaulder,Dimensional Key,Ice Cape";
             Properties.Settings.Default.Panel5Contents = "Origin Seal,Birth Seal,Life Seal,Death Seal";
             Properties.Settings.Default.Panel6Contents = "reader.exe,xmailer.exe,yagomap.exe,yagostr.exe,bunemon.exe,bunplus.com,torude.exe,guild.exe,mantra.exe,emusic.exe,beolamu.exe,deathv.exe,randc.exe,capstar.exe,move.exe,mekuri.exe,bounce.exe,miracle.exe,mirai.exe,lamulana.exe";
-            Properties.Settings.Default.BackgroundColor = System.Drawing.SystemColors.Control;
-            Properties.Settings.Default.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
-            Properties.Settings.Default.FormWidth = 320;
-            Properties.Settings.Default.FormHeight = 694;
-            Properties.Settings.Default.BackgroundMode = "shaded";
+            Properties.Settings.Default.BackgroundColor = System.Drawing.Color.Black;
+            Properties.Settings.Default.TextColor = System.Drawing.Color.White;
+            Properties.Settings.Default.FormWidth = 356;
+            Properties.Settings.Default.FormHeight = 852;
             Properties.Settings.Default.ShowLastItem = true;
             Properties.Settings.Default.AlwaysOnTop = true;
             Properties.Settings.Default.ShowAmmoCount = true;
 
+            // Don't update background mode
+
             updateAlwaysOnTop();
-            updateShowAmmoCount();
             updateFormSize();
             updateFormColor();
             updateTextColor();
             updateShowLastItem();
-            InitializeFormPanels();
+            updateShowAmmoCount();
+            readerPanel.Size = GetAmmoPanelSize(translationTablets.Text);
+
+            rebuildPanelContents(Properties.Settings.Default.Panel1Contents, null, false);
+            rebuildPanelContents(Properties.Settings.Default.Panel2Contents, null, false);
+            rebuildPanelContents(Properties.Settings.Default.Panel3Contents, null, false);
+            rebuildPanelContents(Properties.Settings.Default.Panel4Contents, null, false);
+            rebuildPanelContents(Properties.Settings.Default.Panel5Contents, null, false);
+            rebuildPanelContents(Properties.Settings.Default.Panel6Contents, null, false);
             this.Refresh();
         }
 
