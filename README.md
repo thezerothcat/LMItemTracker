@@ -1,11 +1,9 @@
-# Item Tracker for La-Mulana Remake Randomizer
+# Item Tracker for La-Mulana Remake
 
 ## Features
 
-* Tracks progress for randomized playthroughs
-* Includes some information not available in the pause menu, such as which mantras you've recited and whether or not you have the map for Shrine of the Mother
+* Tracks progress for non-randomized playthroughs
 * Ability to change background color and text color, either by double-clicking the background/text or using the menu option.
-* Ability to reorganize item layout (with some limitations).
 * Ability to save settings.
 
 ## Installation
