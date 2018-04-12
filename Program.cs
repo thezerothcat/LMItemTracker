@@ -64,6 +64,19 @@ namespace LMItemTracker
             {
                 laMulanaItemTrackerForm.updateTranslationTablets((byte)cur);
             }
+            //else if (displayname.Equals("shield-fake"))
+            //{
+            //    if((ushort)old != 19)
+            //    {
+            //        // Ignore the fake shield give that seems to be counteracting some odd in-game bug that sets its value to 19
+            //        bool isAdd = false;
+            //        if (cur is ushort)
+            //        {
+            //            isAdd =  (ushort)cur > 0;
+            //        }
+            //        laMulanaItemTrackerForm.updateShield(displayname, isAdd);
+            //    }
+            //}
             else if (displayname.StartsWith("shield-"))
             {
                 bool isAdd = false;

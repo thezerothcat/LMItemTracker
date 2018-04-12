@@ -13,7 +13,6 @@ namespace LMItemTracker
         public LaMulanaItemTrackerForm()
         {
             InitializeComponent();
-            InitializePictureBoxes();
             ScaleImages(this);
             this.mantrasRecited = false;
             this.keySwordCollected = false;
@@ -66,45 +65,6 @@ namespace LMItemTracker
         {
             flagListener = new BackgroundWorker();
             flagListener.DoWork += new DoWorkEventHandler(flagListener_DoWork);
-        }
-
-        private void InitializePictureBoxes()
-        {
-            this.shellHorn = BuildPictureBox("Shell Horn");
-            this.waterproofCase = BuildPictureBox("Waterproof Case");
-            this.heatproofCase = BuildPictureBox("Heatproof Case");
-            this.djedPillar = BuildPictureBox("Djed Pillar");
-            this.mantraSingle = BuildPictureBox("mantra.exe");
-            this.xmailer = BuildPictureBox("xmailer.exe");
-            this.yagomap = BuildPictureBox("yagomap.exe");
-            this.yagostr = BuildPictureBox("yagostr.exe");
-            this.bunemon = BuildPictureBox("bunemon.exe");
-            this.bunplus = BuildPictureBox("bunplus.com");
-            this.guild = BuildPictureBox("guild.exe");
-            this.emusic = BuildPictureBox("emusic.exe");
-            this.beolamu = BuildPictureBox("beolamu.exe");
-            this.deathv = BuildPictureBox("deathv.exe");
-            this.randc = BuildPictureBox("randc.exe");
-            this.capstar = BuildPictureBox("capstar.exe");
-            this.move = BuildPictureBox("move.exe");
-            this.mekuri = BuildPictureBox("mekuri.exe");
-            this.bounce = BuildPictureBox("bounce.exe");
-            this.miracle = BuildPictureBox("miracle.exe");
-            this.lamulana = BuildPictureBox("lamulana.exe");
-            this.swimsuit = BuildPictureBox("Provocative Bathing Suit");
-        }
-
-        private PictureBox BuildPictureBox(String itemName)
-        {
-            PictureBox pictureBox = new PictureBox();
-            pictureBox.Image = getBlankImage(getFlagName(itemName));
-            pictureBox.Location = new System.Drawing.Point(0, 0);
-            pictureBox.Margin = new Padding(0);
-            pictureBox.Size = new System.Drawing.Size(40, 40);
-            pictureBox.TabStop = false;
-            pictureBox.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            return pictureBox;
         }
 
         private void InitializePossibleItems()
@@ -352,6 +312,11 @@ namespace LMItemTracker
                     fakeSilverShield.Visible = false;
                     silverShield.Visible = false;
                     angelShield.Visible = false;
+
+                    shieldsPanel.Controls.SetChildIndex(buckler, 3);
+                    shieldsPanel.Controls.SetChildIndex(silverShield, 2);
+                    shieldsPanel.Controls.SetChildIndex(fakeSilverShield, 1);
+                    shieldsPanel.Controls.SetChildIndex(angelShield, 0);
                 }
             }
         }
@@ -919,11 +884,33 @@ namespace LMItemTracker
                 updateCount(skullWallCount, isAdd, 4);
                 SetImage(flagName, isAdd);
             }
-            else if ("w-medicine".Equals(flagName))
+            else if ("w-medicine-yellow".Equals(flagName))
             {
                 if (isAdd)
                 {
                     SetImage(vessel, global::LMItemTracker.Properties.Resources.Icon_medicineofthemind);
+                }
+                else
+                {
+                    SetImage(vessel, global::LMItemTracker.Properties.Resources.Icon_vessel); // todo: what if we don't have vessel?
+                }
+            }
+            else if ("w-medicine-green".Equals(flagName))
+            {
+                if (isAdd)
+                {
+                    SetImage(vessel, global::LMItemTracker.Properties.Resources.Icon_medicineofthemind_green);
+                }
+                else
+                {
+                    SetImage(vessel, global::LMItemTracker.Properties.Resources.Icon_vessel); // todo: what if we don't have vessel?
+                }
+            }
+            else if ("w-medicine-red".Equals(flagName))
+            {
+                if (isAdd)
+                {
+                    SetImage(vessel, global::LMItemTracker.Properties.Resources.Icon_medicineofthemind_red);
                 }
                 else
                 {
@@ -3825,46 +3812,6 @@ namespace LMItemTracker
             }
         }
 
-        private void toggleVisibility(Control control, bool visible)
-        {
-            if (control != null)
-            {
-                if (control.InvokeRequired)
-                {
-                    control.Invoke(new Action(() =>
-                    {
-                        if (control.Visible != visible)
-                        {
-                            control.Visible = visible;
-                            if (control.HasChildren)
-                            {
-                                foreach (Control child in control.Controls)
-                                {
-                                    control.Controls.SetChildIndex(child, child.TabIndex);
-                                }
-                            }
-                            control.Refresh();
-                        }
-                    }));
-                }
-                else
-                {
-                    if (control.Visible != visible)
-                    {
-                        // In case this isn't an active form control right now.
-                        if (control.HasChildren)
-                        {
-                            foreach (Control child in control.Controls)
-                            {
-                                control.Controls.SetChildIndex(child, child.TabIndex);
-                            }
-                        }
-                        control.Visible = visible;
-                    }
-                }
-            }
-        }
-
         private void SetImage(String flagName, bool isAdd)
         {
             String itemName = getItemName(flagName);
@@ -4021,13 +3968,13 @@ namespace LMItemTracker
                     {
                         label.Invoke(new Action(() =>
                         {
-                            label.Text = newCount + ":" + label.Text.Substring(label.Text.IndexOf(':'));
+                            label.Text = newCount + ":" + label.Text.Substring(label.Text.IndexOf(':') + 1);
                             label.Refresh();
                         }));
                     }
                     else
                     {
-                        label.Text = newCount + ":" + label.Text.Substring(label.Text.IndexOf(':'));
+                        label.Text = newCount + ":" + label.Text.Substring(label.Text.IndexOf(':') + 1);
                     }
                 }
             }

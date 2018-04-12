@@ -708,6 +708,12 @@
   <ItemGroup>
     <None Include="Resources\Icon_silvershield2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_medicineofthemind_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_medicineofthemind_red.png" />
+  </ItemGroup>
   <Import Project="EyeOfTruth.Shared\EyeOfTruth.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

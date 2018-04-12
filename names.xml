@@ -103,7 +103,9 @@
     <item id="byte-103" value="w-treasures" />
     <item id="byte-104" value="w-diary" />
 	<item id="byte-106" value="w-forbidden" comments="2" />
-    <item id="byte-108" value="w-medicine" comments="2" />
+    <item id="byte-108" value="w-medicine-yellow" comments="2" />
+	<item id="byte-109" value="w-medicine-green" comments="2" />
+	<item id="byte-10a" value="w-medicine-red" comments="2" />
 	<item id="byte-118" value="fairypointsactive" comment="fairy points work and healing fairy in credits" />
     <item id="byte-125" value="mantra-sakit" comments="4=recited" />
     <item id="byte-126" value="mantra-ellmac" comments="4=recited" />
@@ -128,7 +130,7 @@
     <item id="byte-35d" value="orb-ruin" />
     <item id="byte-35e" value="orb-dimension" />
 	<item id="word-000" value="whip" />
-	<item id="word-010" value="ign-shield-buckler" />
+	<item id="word-010" value="shield-buckler" />
     <item id="word-011" value="shield-silver" />
     <item id="word-012" value="shield-angel" />
 	<item id="byte-08c" value="recent-silver" />

@@ -185,6 +185,21 @@ namespace LMItemTracker
             this.ankhJewelPanel = new System.Windows.Forms.Panel();
             this.ankhJewels = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.shellHorn = new System.Windows.Forms.PictureBox();
+            this.waterproofCase = new System.Windows.Forms.PictureBox();
+            this.heatproofCase = new System.Windows.Forms.PictureBox();
+            this.djedPillar = new System.Windows.Forms.PictureBox();
+            this.mantraSingle = new System.Windows.Forms.PictureBox();
+            this.swimsuit = new System.Windows.Forms.PictureBox();
+            this.xmailer = new System.Windows.Forms.PictureBox();
+            this.yagomap = new System.Windows.Forms.PictureBox();
+            this.yagostr = new System.Windows.Forms.PictureBox();
+            this.bunemon = new System.Windows.Forms.PictureBox();
+            this.bunplus = new System.Windows.Forms.PictureBox();
+            this.guild = new System.Windows.Forms.PictureBox();
+            this.emusic = new System.Windows.Forms.PictureBox();
+            this.beolamu = new System.Windows.Forms.PictureBox();
+            this.deathv = new System.Windows.Forms.PictureBox();
             this.bossPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.amphisbaena = new System.Windows.Forms.PictureBox();
             this.sakit = new System.Windows.Forms.PictureBox();
@@ -194,6 +209,13 @@ namespace LMItemTracker
             this.palenque = new System.Windows.Forms.PictureBox();
             this.baphomet = new System.Windows.Forms.PictureBox();
             this.tiamat = new System.Windows.Forms.PictureBox();
+            this.randc = new System.Windows.Forms.PictureBox();
+            this.capstar = new System.Windows.Forms.PictureBox();
+            this.move = new System.Windows.Forms.PictureBox();
+            this.mekuri = new System.Windows.Forms.PictureBox();
+            this.bounce = new System.Windows.Forms.PictureBox();
+            this.miracle = new System.Windows.Forms.PictureBox();
+            this.lamulana = new System.Windows.Forms.PictureBox();
             this.shieldsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buckler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.angelShield)).BeginInit();
@@ -304,6 +326,22 @@ namespace LMItemTracker
             ((System.ComponentModel.ISupportInitialize)(this.maps)).BeginInit();
             this.ankhJewelPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ankhJewels)).BeginInit();
+            this.flowLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shellHorn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.waterproofCase)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.heatproofCase)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.djedPillar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mantraSingle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.swimsuit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xmailer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yagomap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yagostr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunemon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunplus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guild)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emusic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.beolamu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deathv)).BeginInit();
             this.bossPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.amphisbaena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sakit)).BeginInit();
@@ -313,6 +351,13 @@ namespace LMItemTracker
             ((System.ComponentModel.ISupportInitialize)(this.palenque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.baphomet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiamat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.randc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.capstar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.move)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mekuri)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bounce)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.miracle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lamulana)).BeginInit();
             this.SuspendLayout();
             // 
             // textColorDialog
@@ -805,7 +850,7 @@ namespace LMItemTracker
             this.mainPanel.Margin = new System.Windows.Forms.Padding(0);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.mainPanel.Size = new System.Drawing.Size(304, 636);
+            this.mainPanel.Size = new System.Drawing.Size(304, 762);
             this.mainPanel.TabIndex = 111;
             this.mainPanel.DoubleClick += new System.EventHandler(this.LaMulanaItemTrackerForm_DoubleClick);
             // 
@@ -1893,12 +1938,184 @@ namespace LMItemTracker
             // 
             this.flowLayoutPanel6.AutoSize = true;
             this.flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel6.Controls.Add(this.shellHorn);
+            this.flowLayoutPanel6.Controls.Add(this.waterproofCase);
+            this.flowLayoutPanel6.Controls.Add(this.heatproofCase);
+            this.flowLayoutPanel6.Controls.Add(this.swimsuit);
+            this.flowLayoutPanel6.Controls.Add(this.djedPillar);
+            this.flowLayoutPanel6.Controls.Add(this.mantraSingle);
+            this.flowLayoutPanel6.Controls.Add(this.xmailer);
+            this.flowLayoutPanel6.Controls.Add(this.yagomap);
+            this.flowLayoutPanel6.Controls.Add(this.yagostr);
+            this.flowLayoutPanel6.Controls.Add(this.bunemon);
+            this.flowLayoutPanel6.Controls.Add(this.bunplus);
+            this.flowLayoutPanel6.Controls.Add(this.guild);
+            this.flowLayoutPanel6.Controls.Add(this.emusic);
+            this.flowLayoutPanel6.Controls.Add(this.beolamu);
+            this.flowLayoutPanel6.Controls.Add(this.deathv);
+            this.flowLayoutPanel6.Controls.Add(this.randc);
+            this.flowLayoutPanel6.Controls.Add(this.capstar);
+            this.flowLayoutPanel6.Controls.Add(this.move);
+            this.flowLayoutPanel6.Controls.Add(this.mekuri);
+            this.flowLayoutPanel6.Controls.Add(this.bounce);
+            this.flowLayoutPanel6.Controls.Add(this.miracle);
+            this.flowLayoutPanel6.Controls.Add(this.lamulana);
             this.mainPanel.SetFlowBreak(this.flowLayoutPanel6, true);
             this.flowLayoutPanel6.Location = new System.Drawing.Point(10, 550);
             this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(280, 160);
             this.flowLayoutPanel6.TabIndex = 120;
+            // 
+            // shellHorn
+            // 
+            this.shellHorn.Image = global::LMItemTracker.Properties.Resources.Icon_shellhorn_blank;
+            this.shellHorn.Location = new System.Drawing.Point(0, 0);
+            this.shellHorn.Margin = new System.Windows.Forms.Padding(0);
+            this.shellHorn.Name = "shellHorn";
+            this.shellHorn.Size = new System.Drawing.Size(40, 40);
+            this.shellHorn.TabIndex = 45;
+            this.shellHorn.TabStop = false;
+            // 
+            // waterproofCase
+            // 
+            this.waterproofCase.Image = global::LMItemTracker.Properties.Resources.Icon_waterproofcase_blank;
+            this.waterproofCase.Location = new System.Drawing.Point(40, 0);
+            this.waterproofCase.Margin = new System.Windows.Forms.Padding(0);
+            this.waterproofCase.Name = "waterproofCase";
+            this.waterproofCase.Size = new System.Drawing.Size(40, 40);
+            this.waterproofCase.TabIndex = 46;
+            this.waterproofCase.TabStop = false;
+            // 
+            // heatproofCase
+            // 
+            this.heatproofCase.Image = global::LMItemTracker.Properties.Resources.Icon_heatproofcase_blank;
+            this.heatproofCase.Location = new System.Drawing.Point(80, 0);
+            this.heatproofCase.Margin = new System.Windows.Forms.Padding(0);
+            this.heatproofCase.Name = "heatproofCase";
+            this.heatproofCase.Size = new System.Drawing.Size(40, 40);
+            this.heatproofCase.TabIndex = 47;
+            this.heatproofCase.TabStop = false;
+            // 
+            // djedPillar
+            // 
+            this.djedPillar.Image = global::LMItemTracker.Properties.Resources.Icon_djedpillar_blank;
+            this.djedPillar.Location = new System.Drawing.Point(160, 0);
+            this.djedPillar.Margin = new System.Windows.Forms.Padding(0);
+            this.djedPillar.Name = "djedPillar";
+            this.djedPillar.Size = new System.Drawing.Size(40, 40);
+            this.djedPillar.TabIndex = 48;
+            this.djedPillar.TabStop = false;
+            // 
+            // mantraSingle
+            // 
+            this.mantraSingle.Image = global::LMItemTracker.Properties.Resources.Icon_mantra_blank;
+            this.mantraSingle.Location = new System.Drawing.Point(200, 0);
+            this.mantraSingle.Margin = new System.Windows.Forms.Padding(0);
+            this.mantraSingle.Name = "mantraSingle";
+            this.mantraSingle.Size = new System.Drawing.Size(40, 40);
+            this.mantraSingle.TabIndex = 49;
+            this.mantraSingle.TabStop = false;
+            // 
+            // swimsuit
+            // 
+            this.swimsuit.Image = global::LMItemTracker.Properties.Resources.Icon_swimsuit_blank;
+            this.swimsuit.Location = new System.Drawing.Point(120, 0);
+            this.swimsuit.Margin = new System.Windows.Forms.Padding(0);
+            this.swimsuit.Name = "swimsuit";
+            this.swimsuit.Size = new System.Drawing.Size(40, 40);
+            this.swimsuit.TabIndex = 50;
+            this.swimsuit.TabStop = false;
+            // 
+            // xmailer
+            // 
+            this.xmailer.Image = global::LMItemTracker.Properties.Resources.Icon_xmailer_blank;
+            this.xmailer.Location = new System.Drawing.Point(240, 0);
+            this.xmailer.Margin = new System.Windows.Forms.Padding(0);
+            this.xmailer.Name = "xmailer";
+            this.xmailer.Size = new System.Drawing.Size(40, 40);
+            this.xmailer.TabIndex = 51;
+            this.xmailer.TabStop = false;
+            // 
+            // yagomap
+            // 
+            this.yagomap.Image = global::LMItemTracker.Properties.Resources.Icon_yagomap_blank;
+            this.yagomap.Location = new System.Drawing.Point(0, 40);
+            this.yagomap.Margin = new System.Windows.Forms.Padding(0);
+            this.yagomap.Name = "yagomap";
+            this.yagomap.Size = new System.Drawing.Size(40, 40);
+            this.yagomap.TabIndex = 52;
+            this.yagomap.TabStop = false;
+            // 
+            // yagostr
+            // 
+            this.yagostr.Image = global::LMItemTracker.Properties.Resources.Icon_yagostr_blank;
+            this.yagostr.Location = new System.Drawing.Point(40, 40);
+            this.yagostr.Margin = new System.Windows.Forms.Padding(0);
+            this.yagostr.Name = "yagostr";
+            this.yagostr.Size = new System.Drawing.Size(40, 40);
+            this.yagostr.TabIndex = 53;
+            this.yagostr.TabStop = false;
+            // 
+            // bunemon
+            // 
+            this.bunemon.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.bunemon.Location = new System.Drawing.Point(80, 40);
+            this.bunemon.Margin = new System.Windows.Forms.Padding(0);
+            this.bunemon.Name = "bunemon";
+            this.bunemon.Size = new System.Drawing.Size(40, 40);
+            this.bunemon.TabIndex = 54;
+            this.bunemon.TabStop = false;
+            // 
+            // bunplus
+            // 
+            this.bunplus.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.bunplus.Location = new System.Drawing.Point(120, 40);
+            this.bunplus.Margin = new System.Windows.Forms.Padding(0);
+            this.bunplus.Name = "bunplus";
+            this.bunplus.Size = new System.Drawing.Size(40, 40);
+            this.bunplus.TabIndex = 55;
+            this.bunplus.TabStop = false;
+            // 
+            // guild
+            // 
+            this.guild.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.guild.Location = new System.Drawing.Point(160, 40);
+            this.guild.Margin = new System.Windows.Forms.Padding(0);
+            this.guild.Name = "guild";
+            this.guild.Size = new System.Drawing.Size(40, 40);
+            this.guild.TabIndex = 56;
+            this.guild.TabStop = false;
+            // 
+            // emusic
+            // 
+            this.emusic.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.emusic.Location = new System.Drawing.Point(200, 40);
+            this.emusic.Margin = new System.Windows.Forms.Padding(0);
+            this.emusic.Name = "emusic";
+            this.emusic.Size = new System.Drawing.Size(40, 40);
+            this.emusic.TabIndex = 57;
+            this.emusic.TabStop = false;
+            // 
+            // beolamu
+            // 
+            this.beolamu.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.beolamu.Location = new System.Drawing.Point(240, 40);
+            this.beolamu.Margin = new System.Windows.Forms.Padding(0);
+            this.beolamu.Name = "beolamu";
+            this.beolamu.Size = new System.Drawing.Size(40, 40);
+            this.beolamu.TabIndex = 58;
+            this.beolamu.TabStop = false;
+            // 
+            // deathv
+            // 
+            this.deathv.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.deathv.Location = new System.Drawing.Point(0, 80);
+            this.deathv.Margin = new System.Windows.Forms.Padding(0);
+            this.deathv.Name = "deathv";
+            this.deathv.Size = new System.Drawing.Size(40, 40);
+            this.deathv.TabIndex = 59;
+            this.deathv.TabStop = false;
             // 
             // bossPanel
             // 
@@ -1913,7 +2130,7 @@ namespace LMItemTracker
             this.bossPanel.Controls.Add(this.baphomet);
             this.bossPanel.Controls.Add(this.tiamat);
             this.mainPanel.SetFlowBreak(this.bossPanel, true);
-            this.bossPanel.Location = new System.Drawing.Point(10, 592);
+            this.bossPanel.Location = new System.Drawing.Point(10, 718);
             this.bossPanel.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.bossPanel.MaximumSize = new System.Drawing.Size(280, 0);
             this.bossPanel.Name = "bossPanel";
@@ -2001,10 +2218,80 @@ namespace LMItemTracker
             this.tiamat.TabIndex = 19;
             this.tiamat.TabStop = false;
             // 
+            // randc
+            // 
+            this.randc.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.randc.Location = new System.Drawing.Point(40, 80);
+            this.randc.Margin = new System.Windows.Forms.Padding(0);
+            this.randc.Name = "randc";
+            this.randc.Size = new System.Drawing.Size(40, 40);
+            this.randc.TabIndex = 60;
+            this.randc.TabStop = false;
+            // 
+            // capstar
+            // 
+            this.capstar.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.capstar.Location = new System.Drawing.Point(80, 80);
+            this.capstar.Margin = new System.Windows.Forms.Padding(0);
+            this.capstar.Name = "capstar";
+            this.capstar.Size = new System.Drawing.Size(40, 40);
+            this.capstar.TabIndex = 61;
+            this.capstar.TabStop = false;
+            // 
+            // move
+            // 
+            this.move.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.move.Location = new System.Drawing.Point(120, 80);
+            this.move.Margin = new System.Windows.Forms.Padding(0);
+            this.move.Name = "move";
+            this.move.Size = new System.Drawing.Size(40, 40);
+            this.move.TabIndex = 62;
+            this.move.TabStop = false;
+            // 
+            // mekuri
+            // 
+            this.mekuri.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.mekuri.Location = new System.Drawing.Point(160, 80);
+            this.mekuri.Margin = new System.Windows.Forms.Padding(0);
+            this.mekuri.Name = "mekuri";
+            this.mekuri.Size = new System.Drawing.Size(40, 40);
+            this.mekuri.TabIndex = 63;
+            this.mekuri.TabStop = false;
+            // 
+            // bounce
+            // 
+            this.bounce.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.bounce.Location = new System.Drawing.Point(200, 80);
+            this.bounce.Margin = new System.Windows.Forms.Padding(0);
+            this.bounce.Name = "bounce";
+            this.bounce.Size = new System.Drawing.Size(40, 40);
+            this.bounce.TabIndex = 64;
+            this.bounce.TabStop = false;
+            // 
+            // miracle
+            // 
+            this.miracle.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.miracle.Location = new System.Drawing.Point(240, 80);
+            this.miracle.Margin = new System.Windows.Forms.Padding(0);
+            this.miracle.Name = "miracle";
+            this.miracle.Size = new System.Drawing.Size(40, 40);
+            this.miracle.TabIndex = 65;
+            this.miracle.TabStop = false;
+            // 
+            // lamulana
+            // 
+            this.lamulana.Image = global::LMItemTracker.Properties.Resources.Icon_hermesboots_blank;
+            this.lamulana.Location = new System.Drawing.Point(0, 120);
+            this.lamulana.Margin = new System.Windows.Forms.Padding(0);
+            this.lamulana.Name = "lamulana";
+            this.lamulana.Size = new System.Drawing.Size(40, 40);
+            this.lamulana.TabIndex = 66;
+            this.lamulana.TabStop = false;
+            // 
             // LaMulanaItemTrackerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(304, 660);
+            this.ClientSize = new System.Drawing.Size(304, 787);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.menu);
             this.HelpButton = true;
@@ -2127,6 +2414,22 @@ namespace LMItemTracker
             ((System.ComponentModel.ISupportInitialize)(this.maps)).EndInit();
             this.ankhJewelPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ankhJewels)).EndInit();
+            this.flowLayoutPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.shellHorn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.waterproofCase)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.heatproofCase)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.djedPillar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mantraSingle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.swimsuit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xmailer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yagomap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yagostr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunemon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunplus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guild)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emusic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.beolamu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deathv)).EndInit();
             this.bossPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.amphisbaena)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sakit)).EndInit();
@@ -2136,6 +2439,13 @@ namespace LMItemTracker
             ((System.ComponentModel.ISupportInitialize)(this.palenque)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.baphomet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiamat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.randc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.capstar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.move)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mekuri)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bounce)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.miracle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lamulana)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2159,29 +2469,6 @@ namespace LMItemTracker
         private PictureBox maps;
         private PictureBox mulanaTalisman;
         private PictureBox talisman;
-
-        private PictureBox shellHorn;
-        private PictureBox waterproofCase;
-        private PictureBox heatproofCase;
-        private PictureBox djedPillar;
-        private PictureBox xmailer;
-        private PictureBox yagomap;
-        private PictureBox yagostr;
-        private PictureBox bunemon;
-        private PictureBox bunplus;
-        private PictureBox guild;
-        private PictureBox emusic;
-        private PictureBox beolamu;
-        private PictureBox randc;
-        private PictureBox capstar;
-        private PictureBox deathv;
-        private PictureBox move;
-        private PictureBox mekuri;
-        private PictureBox bounce;
-        private PictureBox miracle;
-        private PictureBox lamulana;
-        private PictureBox swimsuit;
-        private PictureBox mantraSingle;
 
         private Boolean mantrasRecited;
         private Boolean keySwordCollected;
@@ -2342,5 +2629,27 @@ namespace LMItemTracker
         private ToolStripMenuItem hideImageToolStripMenuItem;
         private FlowLayoutPanel flowLayoutPanel6;
         private ToolStripMenuItem addItemPanel6ToolStripMenuItem;
+        private PictureBox shellHorn;
+        private PictureBox waterproofCase;
+        private PictureBox heatproofCase;
+        private PictureBox djedPillar;
+        private PictureBox mantraSingle;
+        private PictureBox swimsuit;
+        private PictureBox xmailer;
+        private PictureBox yagomap;
+        private PictureBox yagostr;
+        private PictureBox bunemon;
+        private PictureBox bunplus;
+        private PictureBox guild;
+        private PictureBox emusic;
+        private PictureBox beolamu;
+        private PictureBox deathv;
+        private PictureBox randc;
+        private PictureBox capstar;
+        private PictureBox move;
+        private PictureBox mekuri;
+        private PictureBox bounce;
+        private PictureBox miracle;
+        private PictureBox lamulana;
     }
 }
