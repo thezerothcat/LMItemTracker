@@ -198,7 +198,15 @@ namespace LMItemTracker
 
             while (true)
             {
-                DateTime sleeptarget = DateTime.UtcNow.AddMilliseconds(100);
+                DateTime sleeptarget;
+                if (startupCounter == 2)
+                {
+                    sleeptarget = DateTime.UtcNow.AddMilliseconds(5);
+                }
+                else
+                {
+                    sleeptarget = DateTime.UtcNow.AddMilliseconds(100);
+                }
 
                 try
                 {
@@ -214,10 +222,11 @@ namespace LMItemTracker
                         {
                             // Player is dead or hasn't started a game.
                             laMulanaItemTrackerForm.setGameStarted(false);
+                            sleeptarget = DateTime.UtcNow.AddMilliseconds(20);
                             startupCounter = 1;
                         }
 
-                        if(startupCounter == 2)
+                        if (startupCounter == 3)
                         {
                             laMulanaItemTrackerForm.setGameStarted(true);
                         }
@@ -248,7 +257,7 @@ namespace LMItemTracker
                         }
                         rbytes_old = rbytes_new;
                         rwords_old = rwords_new;
-                        if (startupCounter < 2)
+                        if (startupCounter < 3 && rbytes_new[824] != 0)
                         {
                             ++startupCounter;
                         }
