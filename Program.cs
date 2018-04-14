@@ -39,7 +39,7 @@ namespace LMItemTracker
 
         static void changed(object cur, object old, string name, LMItemTracker.LaMulanaItemTrackerForm laMulanaItemTrackerForm)
         {
-            if (!name.StartsWith("byte-") && !name.StartsWith("word-"))
+            if (!name.StartsWith("byte-") && !name.StartsWith("word-") && !"flags-1".Equals(name))
                 return;
 
             string displayname;
@@ -54,9 +54,16 @@ namespace LMItemTracker
                 format = ":x4";
             else if (cur is uint || cur is int)
                 format = ":x8";
-            System.Console.WriteLine("{0} {1,15} := {2" + format + "} to {3" + format + "}", name, displayname, old, cur);
+            //System.Console.WriteLine("{0} {1,15} := {2" + format + "} to {3" + format + "}", name, displayname, old, cur);
 
-            if(displayname.StartsWith("boss-"))
+            if (displayname.Equals("death-tracker"))
+            {
+                if(((uint)old & 0x1000000) == 0 && (((uint)cur & 0x1000000) == 16777216))
+                {
+                    laMulanaItemTrackerForm.updateDeathCount(true);
+                }
+            }
+            if (displayname.StartsWith("boss-"))
             {
                 laMulanaItemTrackerForm.toggleBoss(displayname, (byte)cur >= (byte)3);
             }
@@ -64,19 +71,6 @@ namespace LMItemTracker
             {
                 laMulanaItemTrackerForm.updateTranslationTablets((byte)cur);
             }
-            //else if (displayname.Equals("shield-fake"))
-            //{
-            //    if((ushort)old != 19)
-            //    {
-            //        // Ignore the fake shield give that seems to be counteracting some odd in-game bug that sets its value to 19
-            //        bool isAdd = false;
-            //        if (cur is ushort)
-            //        {
-            //            isAdd =  (ushort)cur > 0;
-            //        }
-            //        laMulanaItemTrackerForm.updateShield(displayname, isAdd);
-            //    }
-            //}
             else if (displayname.StartsWith("shield-"))
             {
                 bool isAdd = false;
@@ -204,7 +198,7 @@ namespace LMItemTracker
 
             while (true)
             {
-                Thread.Sleep(5);
+                DateTime sleeptarget = DateTime.UtcNow.AddMilliseconds(100);
 
                 try
                 {
@@ -223,7 +217,7 @@ namespace LMItemTracker
                             startupCounter = 1;
                         }
 
-                        if(startupCounter == 5)
+                        if(startupCounter == 2)
                         {
                             laMulanaItemTrackerForm.setGameStarted(true);
                         }
@@ -254,7 +248,7 @@ namespace LMItemTracker
                         }
                         rbytes_old = rbytes_new;
                         rwords_old = rwords_new;
-                        if (startupCounter < 5)
+                        if (startupCounter < 2)
                         {
                             ++startupCounter;
                         }
@@ -268,12 +262,24 @@ namespace LMItemTracker
                             System.Console.WriteLine("Unable to access LaMulanaWin.exe, please check the compatibility settings\n"
                                 + "and uncheck \"Run this program as an administrator\" if it is checked.");
                         warnedaboutaccess = true;
+
+                        //if (!warnedaboutaccess)
+                        //{
+                        //    laMulanaItemTrackerForm.ShowMessage("Unable to access LaMulanaWin.exe, please check the compatibility settings"
+                        //        + " and uncheck \"Run this program as an administrator\" if it is checked.");
+                        //    warnedaboutaccess = true;
+                        //}
                     }
                 }
                 catch (Exception ex)
                 {
                     System.Console.WriteLine(ex.StackTrace);
+//                    laMulanaItemTrackerForm.ShowMessage("Unexpected error: " + ex.Message);
                 }
+
+                TimeSpan sleeptime = sleeptarget - DateTime.UtcNow;
+                if (sleeptime > TimeSpan.Zero)
+                   Thread.Sleep(sleeptime);
             }
         }
     }

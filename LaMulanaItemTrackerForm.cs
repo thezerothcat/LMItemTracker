@@ -27,11 +27,14 @@ namespace LMItemTracker
             this.womanStatue.TabIndex = 1;
             this.maternityStatue.TabIndex = 0;
 
+            this.settingsBackup = new SettingsBackup();
+
             updateAlwaysOnTop();
             updateFormSize();
             updateFormColor();
             updateTextColor();
             updateShowLastItem();
+            updateShowDeathCount();
             updateBackgroundMode();
             updateShowAmmoCount();
             readerPanel.Size = GetAmmoPanelSize(translationTablets.Text);
@@ -169,11 +172,11 @@ namespace LMItemTracker
             }
 
             List<String> itemsInPanel = new List<String>(Properties.Settings.Default.Panel1Contents.Split(','));
-            for(int index = 0; index < itemsInPanel.Count; index++)
+            for (int index = 0; index < itemsInPanel.Count; index++)
             {
                 String item = itemsInPanel[index];
                 Control control = GetControl(item);
-                if(control != null)
+                if (control != null)
                 {
                     flowLayoutPanel1.Controls.Add(control);
                     control.Margin = new Padding(0);
@@ -280,7 +283,7 @@ namespace LMItemTracker
                         control.Visible = false;
                     }
                 }
-                else if("Whip".Equals(item))
+                else if ("Whip".Equals(item))
                 {
                     whipsPanel.Controls.Add(whip);
                     whipsPanel.Controls.Remove(chainWhip);
@@ -311,13 +314,16 @@ namespace LMItemTracker
                 {
                     lampOfTime.Visible = false;
                 }
-                if("Shield".Equals(item))
+                if ("Shield".Equals(item))
                 {
                     bucklerCollected = false;
                     fakeShieldCollected = false;
                     silverShieldCollected = false;
 
-                    shieldsPanel.Controls.Remove(buckler);
+                    if (!"shaded".Equals(Properties.Settings.Default.BackgroundMode))
+                    {
+                        shieldsPanel.Controls.Remove(buckler);
+                    }
                     shieldsPanel.Controls.Remove(fakeSilverShield);
                     shieldsPanel.Controls.Remove(silverShield);
                     shieldsPanel.Controls.Remove(angelShield);
@@ -348,7 +354,19 @@ namespace LMItemTracker
             // to the Result property of the DoWorkEventArgs
             // object. This is will be available to the 
             // RunWorkerCompleted eventhandler.
-            e.Result = LMItemTracker.Program.DoStuff(this, this._xmlStream);
+            try
+            {
+                e.Result = LMItemTracker.Program.DoStuff(this, this._xmlStream);
+            }
+            catch(Exception ex)
+            {
+                ShowMessage("Unexpected error: " + ex.Message);
+            }
+        }
+
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
         }
 
         private String getItemName(String flagName)
@@ -537,7 +555,7 @@ namespace LMItemTracker
             {
                 return "Dragon Bone";
             }
-            else if("w-seal1".Equals(flagName))
+            else if ("w-seal1".Equals(flagName))
             {
                 return "Origin Seal";
             }
@@ -613,7 +631,7 @@ namespace LMItemTracker
             {
                 return "randc.exe";
             }
-            else if("w-soft-reader".Equals(flagName))
+            else if ("w-soft-reader".Equals(flagName))
             {
                 return "reader.exe";
             }
@@ -633,7 +651,7 @@ namespace LMItemTracker
             {
                 return "yagostr.exe";
             }
-            else if("w-main-axe".Equals(flagName))
+            else if ("w-main-axe".Equals(flagName))
             {
                 return "Axe";
             }
@@ -645,7 +663,7 @@ namespace LMItemTracker
             {
                 return "Katana";
             }
-            else if("w-sub-shuriken".Equals(flagName))
+            else if ("w-sub-shuriken".Equals(flagName))
             {
                 return "Shuriken";
             }
@@ -792,7 +810,7 @@ namespace LMItemTracker
                 SetImage(flagName, isAdd);
                 if ("w-soft-mekuri".Equals(flagName))
                 {
-                    if(isAdd)
+                    if (isAdd)
                     {
                         this.mekuriCollected = true;
                         if (this.miracleCollected)
@@ -839,7 +857,7 @@ namespace LMItemTracker
                     }
                 }
             }
-            else if("w-seal1".Equals(flagName) || "w-seal2".Equals(flagName) || "w-seal3".Equals(flagName) || "w-seal4".Equals(flagName))
+            else if ("w-seal1".Equals(flagName) || "w-seal2".Equals(flagName) || "w-seal3".Equals(flagName) || "w-seal4".Equals(flagName))
             {
                 SetImage(flagName, isAdd);
             }
@@ -930,7 +948,7 @@ namespace LMItemTracker
             SetImage(flagName, isAdd);
             if ("w-sub-shuriken".Equals(flagName))
             {
-                if(Properties.Settings.Default.ShowAmmoCount)
+                if (Properties.Settings.Default.ShowAmmoCount)
                 {
                     UpdateTextVisibility(shurikenPanel, isAdd);
                 }
@@ -992,7 +1010,7 @@ namespace LMItemTracker
             {
                 toggleVisibility(grailFull, isAdd);
             }
-            else if ("invtr-grailfull".Equals(flagName))
+            else if ("invtr-grailbr".Equals(flagName))
             {
                 toggleVisibility(grailBroken, isAdd);
             }
@@ -1103,6 +1121,10 @@ namespace LMItemTracker
                 {
                     shieldsPanel.Controls.Add(buckler);
                 }
+                else if (!angelShieldCollected && !silverShieldCollected && !fakeShieldCollected && "shaded".Equals(Properties.Settings.Default.BackgroundMode))
+                {
+                    shieldsPanel.Controls.Add(buckler);
+                }
                 else
                 {
                     shieldsPanel.Controls.Remove(buckler);
@@ -1131,7 +1153,7 @@ namespace LMItemTracker
 
         internal void updateTranslationTablets(byte cur)
         {
-            if(translationTablets.InvokeRequired)
+            if (translationTablets.InvokeRequired)
             {
                 translationTablets.Invoke(new Action(() =>
                 {
@@ -1217,7 +1239,7 @@ namespace LMItemTracker
 
         internal void UpdateLastItem(string flagName)
         {
-            if(this.gameStarted)
+            if (this.gameStarted)
             {
                 lastItemPanel.Invoke(new Action(() =>
                 {
@@ -1475,6 +1497,19 @@ namespace LMItemTracker
             }
         }
 
+        public void updateDeathCount(bool isAdd)
+        {
+            if (isAdd)
+            {
+                Properties.Settings.Default.DeathCount += 1;
+            }
+            else
+            {
+                Properties.Settings.Default.DeathCount -= 1;
+            }
+            updateCount(deathCount, Properties.Settings.Default.DeathCount, int.MaxValue);
+        }
+
         public void toggleMantra(string flagName, bool isAdd)
         {
             if ("mantra-amphisbaena".Equals(flagName))
@@ -1529,33 +1564,33 @@ namespace LMItemTracker
 
         public void setAmmoCount(string flagName, int newCount)
         {
-            if("ammo-shuriken".Equals(flagName))
+            if ("ammo-shuriken".Equals(flagName))
             {
-                updateAmmoCount(shurikenAmmoCount, newCount, 150);
+                updateCount(shurikenAmmoCount, newCount, 150);
             }
             else if ("ammo-roll-shuriken".Equals(flagName))
             {
-                updateAmmoCount(rollingShurikenAmmoCount, newCount, 100);
+                updateCount(rollingShurikenAmmoCount, newCount, 100);
             }
             else if ("ammo-spear".Equals(flagName))
             {
-                updateAmmoCount(earthSpearAmmoCount, newCount, 80);
+                updateCount(earthSpearAmmoCount, newCount, 80);
             }
             else if ("ammo-flare".Equals(flagName))
             {
-                updateAmmoCount(flareGunAmmoCount, newCount, 80);
+                updateCount(flareGunAmmoCount, newCount, 80);
             }
             else if ("ammo-bomb".Equals(flagName))
             {
-                updateAmmoCount(bombAmmoCount, newCount, 30);
+                updateCount(bombAmmoCount, newCount, 30);
             }
             else if ("ammo-chakram".Equals(flagName))
             {
-                updateAmmoCount(chakramAmmoCount, newCount, 10);
+                updateCount(chakramAmmoCount, newCount, 10);
             }
             else if ("ammo-caltrop".Equals(flagName))
             {
-                updateAmmoCount(caltropsAmmoCount, newCount, 80);
+                updateCount(caltropsAmmoCount, newCount, 80);
             }
             else if ("ammo-clip".Equals(flagName))
             {
@@ -1573,23 +1608,28 @@ namespace LMItemTracker
                 {
                     UpdateTextVisibility(ankhJewelPanel, isAdd);
                 }
-                updateAmmoCount(ankhJewelCount, newCount, 8);
+                updateCount(ankhJewelCount, newCount, 8);
             }
         }
 
 
         private void LaMulanaItemTrackerForm_Load(object sender, EventArgs e)
         {
-            if(Properties.Settings.Default.UpgradeRequired)
+            if (Properties.Settings.Default.UpgradeRequired)
             {
                 Properties.Settings.Default.Upgrade();
                 Properties.Settings.Default.UpgradeRequired = false;
                 Properties.Settings.Default.Save();
 
+                updateAlwaysOnTop();
                 updateFormSize();
                 updateFormColor();
                 updateTextColor();
                 updateShowLastItem();
+                updateShowDeathCount();
+                updateShowAmmoCount();
+                readerPanel.Size = GetAmmoPanelSize(translationTablets.Text);
+
                 InitializeFormPanels();
             }
 
@@ -1626,11 +1666,11 @@ namespace LMItemTracker
 
         private void addItemToPanel1(object sender, EventArgs e)
         {
-            if(sender is ToolStripMenuItem)
+            if (sender is ToolStripMenuItem)
             {
                 String itemName = ((ToolStripMenuItem)sender).Text;
                 Control control = GetControl(itemName);
-                if(control == null)
+                if (control == null)
                 {
                     MessageBox.Show("Problem adding " + itemName + " to panel");
                 }
@@ -1800,7 +1840,7 @@ namespace LMItemTracker
                 {
                     control.Parent = null;
                     Control parent = control.Parent;
-                    for(int index = 0; index < parent.Controls.Count; index++)
+                    for (int index = 0; index < parent.Controls.Count; index++)
                     {
                         parent.Controls[index].TabIndex = index;
                     }
@@ -2171,7 +2211,7 @@ namespace LMItemTracker
             else if ("w-soft-bounce".Equals(flagName))
             {
                 return global::LMItemTracker.Properties.Resources.Icon_bounce;
-            } 
+            }
             else if ("w-soft-lamulana".Equals(flagName))
             {
                 return global::LMItemTracker.Properties.Resources.Icon_lamulana;
@@ -2196,11 +2236,11 @@ namespace LMItemTracker
             {
                 return global::LMItemTracker.Properties.Resources.Icon_lampoftime;
             }
-            else if("w-forbidden".Equals(flagName))
+            else if ("w-forbidden".Equals(flagName))
             {
                 return global::LMItemTracker.Properties.Resources.Icon_swimsuit;
             }
-            else if("whip".Equals(flagName))
+            else if ("whip".Equals(flagName))
             {
                 return global::LMItemTracker.Properties.Resources.Icon_whip;
             }
@@ -2586,7 +2626,7 @@ namespace LMItemTracker
 
         private System.Drawing.Bitmap getBlankImage(string flagName)
         {
-            if(!Properties.Settings.Default.BackgroundMode.Equals("shaded"))
+            if (!Properties.Settings.Default.BackgroundMode.Equals("shaded"))
             {
                 if ("w-soft-mantra-combo".Equals(flagName))
                 {
@@ -2771,7 +2811,7 @@ namespace LMItemTracker
             {
                 return global::LMItemTracker.Properties.Resources.Icon_msx2_blank;
             }
-            else if("w-lamp".Equals(flagName))
+            else if ("w-lamp".Equals(flagName))
             {
                 return global::LMItemTracker.Properties.Resources.Icon_lampoftime_blank;
             }
@@ -3402,7 +3442,7 @@ namespace LMItemTracker
             {
                 return buckler;
             }
-            if("Ankh Jewels".Equals(itemName))
+            if ("Ankh Jewels".Equals(itemName))
             {
                 return ankhJewels;
             }
@@ -3757,11 +3797,11 @@ namespace LMItemTracker
 
         private void updateShowLastItem()
         {
-            if(Properties.Settings.Default.ShowLastItem)
+            if (Properties.Settings.Default.ShowLastItem)
             {
-                if(lastItemPanel.Parent == null)
+                if (lastItemPanel.Parent == null)
                 {
-                    lastItemWrapperPanel.Controls.Add(lastItemPanel);
+                    overviewPanel.Controls.Add(lastItemPanel);
                 }
             }
             else
@@ -3792,13 +3832,20 @@ namespace LMItemTracker
             showAmmoCountToolStripMenuItem.Checked = Properties.Settings.Default.ShowAmmoCount;
         }
 
+        private void updateShowDeathCount()
+        {
+            showDeathCountToolStripMenuItem.Checked = Properties.Settings.Default.ShowDeathCount;
+            updateCount(deathCount, Properties.Settings.Default.DeathCount, int.MaxValue);
+            deathPanel.Visible = Properties.Settings.Default.ShowDeathCount;
+        }
+
         private System.Drawing.Size GetAmmoPanelSize(String panelCountText)
         {
-            if(!Properties.Settings.Default.ShowAmmoCount && !panelCountText.Contains("%"))
+            if (!Properties.Settings.Default.ShowAmmoCount && !panelCountText.Contains("%"))
                 return new System.Drawing.Size(40, 40);
             else if ("shaded".Equals(Properties.Settings.Default.BackgroundMode))
                 return new System.Drawing.Size(40, 56);
-            else if("0".Equals(panelCountText) || "0:0".Equals(panelCountText) || "0%".Equals(panelCountText))
+            else if ("0".Equals(panelCountText) || "0:0".Equals(panelCountText) || "0%".Equals(panelCountText))
                 return new System.Drawing.Size(40, 40);
             return new System.Drawing.Size(40, 56);
         }
@@ -3815,6 +3862,8 @@ namespace LMItemTracker
             this.translationTablets.ForeColor = Properties.Settings.Default.TextColor;
             this.skullWallCount.ForeColor = Properties.Settings.Default.TextColor;
             this.lastItemLabel.ForeColor = Properties.Settings.Default.TextColor;
+            this.deathLabel.ForeColor = Properties.Settings.Default.TextColor;
+            this.deathCount.ForeColor = Properties.Settings.Default.TextColor;
             this.shurikenAmmoCount.ForeColor = Properties.Settings.Default.TextColor;
             this.rollingShurikenAmmoCount.ForeColor = Properties.Settings.Default.TextColor;
             this.caltropsAmmoCount.ForeColor = Properties.Settings.Default.TextColor;
@@ -3830,6 +3879,7 @@ namespace LMItemTracker
             Properties.Settings.Default.FormWidth = this.Width;
             Properties.Settings.Default.FormHeight = this.Height;
             Properties.Settings.Default.Save();
+            settingsBackup = new SettingsBackup();
         }
 
         private void restoreDefaultSettings(object sender, EventArgs e)
@@ -3843,10 +3893,12 @@ namespace LMItemTracker
             Properties.Settings.Default.BackgroundColor = System.Drawing.Color.Black;
             Properties.Settings.Default.TextColor = System.Drawing.Color.White;
             Properties.Settings.Default.FormWidth = 356;
-            Properties.Settings.Default.FormHeight = 852;
+            Properties.Settings.Default.FormHeight = 868;
             Properties.Settings.Default.ShowLastItem = true;
             Properties.Settings.Default.AlwaysOnTop = true;
             Properties.Settings.Default.ShowAmmoCount = true;
+            Properties.Settings.Default.ShowDeathCount = true;
+            Properties.Settings.Default.DeathCount = 0;
 
             // Don't update background mode
 
@@ -3856,6 +3908,7 @@ namespace LMItemTracker
             updateTextColor();
             updateShowLastItem();
             updateShowAmmoCount();
+            updateShowDeathCount();
             readerPanel.Size = GetAmmoPanelSize(translationTablets.Text);
 
             rebuildPanelContents(Properties.Settings.Default.Panel1Contents, null, false);
@@ -3869,9 +3922,9 @@ namespace LMItemTracker
 
         private void toggleVisibility(Control control, bool visible)
         {
-            if(control != null)
+            if (control != null)
             {
-                if(control.InvokeRequired)
+                if (control.InvokeRequired)
                 {
                     control.Invoke(new Action(() =>
                     {
@@ -3879,7 +3932,7 @@ namespace LMItemTracker
                         {
                             int controlIndex = control.TabIndex;
                             control.Visible = visible;
-                            if(control.HasChildren)
+                            if (control.HasChildren)
                             {
                                 foreach (Control child in control.Controls)
                                 {
@@ -3929,7 +3982,7 @@ namespace LMItemTracker
 
         private void SetImage(PictureBox pictureBox, System.Drawing.Image image)
         {
-            if(pictureBox.InvokeRequired)
+            if (pictureBox.InvokeRequired)
             {
                 pictureBox.Invoke(new Action(() =>
                 {
@@ -3946,15 +3999,15 @@ namespace LMItemTracker
 
         private void UpdateTextVisibility(Control panel, bool showText)
         {
-            if(panel.InvokeRequired)
+            if (panel.InvokeRequired)
             {
                 panel.Invoke(new Action(() =>
                 {
-                    if(showText)
+                    if (showText)
                     {
                         panel.Size = new System.Drawing.Size(40, 56);
                     }
-                    else if(!"shaded".Equals(Properties.Settings.Default.BackgroundMode))
+                    else if (!"shaded".Equals(Properties.Settings.Default.BackgroundMode))
                     {
                         panel.Size = new System.Drawing.Size(40, 40);
                     }
@@ -3976,7 +4029,7 @@ namespace LMItemTracker
 
         private void setBackgroundImage(PictureBox pictureBox, System.Drawing.Image image)
         {
-            if(pictureBox.InvokeRequired)
+            if (pictureBox.InvokeRequired)
             {
                 pictureBox.Invoke(new Action(() =>
                 {
@@ -3992,7 +4045,7 @@ namespace LMItemTracker
 
         private void updateCount(Label label, bool isAdd, int max)
         {
-            if(label.InvokeRequired)
+            if (label.InvokeRequired)
             {
                 label.Invoke(new Action(() =>
                 {
@@ -4036,11 +4089,11 @@ namespace LMItemTracker
             }
         }
 
-        private void updateAmmoCount(Label label, int newCount, int max)
+        private void updateCount(Label label, int newCount, int max)
         {
             if (newCount >= 0 && newCount <= max)
             {
-                if(label.InvokeRequired)
+                if (label.InvokeRequired)
                 {
                     label.Invoke(new Action(() =>
                     {
@@ -4092,15 +4145,6 @@ namespace LMItemTracker
             }
         }
 
-        private void setFlailWhipIndex(object sender, EventArgs e)
-        {
-            whipsPanel.Controls.SetChildIndex(flailWhip, 0);
-        }
-        private void setChainWhipIndex(object sender, EventArgs e)
-        {
-            whipsPanel.Controls.SetChildIndex(chainWhip, 1);
-        }
-
         private void toggleShowLastItem(object sender, EventArgs e)
         {
             Properties.Settings.Default.ShowLastItem = !Properties.Settings.Default.ShowLastItem;
@@ -4128,7 +4172,7 @@ namespace LMItemTracker
         {
             lastItemLabel.Invoke(new Action(() =>
             {
-                if(lastItemLabel.Text.Equals("Recent Items:"))
+                if (lastItemLabel.Text.Equals("Recent Items:"))
                 {
                     lastItemLabel.Text = "最近:";
                 }
@@ -4150,6 +4194,12 @@ namespace LMItemTracker
         {
             Properties.Settings.Default.ShowAmmoCount = !Properties.Settings.Default.ShowAmmoCount;
             updateShowAmmoCount();
+        }
+
+        private void toggleDeathCount(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ShowDeathCount = !Properties.Settings.Default.ShowDeathCount;
+            updateShowDeathCount();
         }
 
         private void setHideUncollected(object sender, EventArgs e)
@@ -4174,6 +4224,31 @@ namespace LMItemTracker
             Properties.Settings.Default.Save();
             updateBackgroundMode();
             MessageBox.Show("Your settings have been saved. Please restart to allow them to take effect.");
+        }
+
+        private void resetDeathCount(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.DeathCount = 0;
+            updateCount(deathCount, Properties.Settings.Default.DeathCount, int.MaxValue);
+        }
+
+        private void deathCount_MouseClick(object sender, MouseEventArgs e)
+        {
+            MouseEventArgs me = (MouseEventArgs)e;
+            if(me.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                updateDeathCount(true);
+            }
+            else if (me.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                updateDeathCount(false);
+            }
+        }
+
+        private void formClosing(object sender, FormClosingEventArgs e)
+        {
+            settingsBackup.RestoreSettings();
+            Properties.Settings.Default.Save();
         }
     }
 }

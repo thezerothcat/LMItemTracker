@@ -88,7 +88,7 @@ namespace LMItemTracker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Control")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
         public global::System.Drawing.Color BackgroundColor {
             get {
                 return ((global::System.Drawing.Color)(this["BackgroundColor"]));
@@ -136,7 +136,7 @@ namespace LMItemTracker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("852")]
+        [global::System.Configuration.DefaultSettingValueAttribute("868")]
         public int FormHeight {
             get {
                 return ((int)(this["FormHeight"]));
@@ -205,6 +205,30 @@ namespace LMItemTracker.Properties {
             }
             set {
                 this["Panel6Contents"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowDeathCount {
+            get {
+                return ((bool)(this["ShowDeathCount"]));
+            }
+            set {
+                this["ShowDeathCount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int DeathCount {
+            get {
+                return ((int)(this["DeathCount"]));
+            }
+            set {
+                this["DeathCount"] = value;
             }
         }
     }

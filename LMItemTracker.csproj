@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SettingsBackup.cs" />
     <Compile Include="LaMulanaItemTrackerForm.cs">
       <SubType>Form</SubType>
     </Compile>

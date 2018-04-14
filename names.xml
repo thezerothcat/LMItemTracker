@@ -149,7 +149,7 @@
 	<item id="word-02b" value="inv-w-helmet" />
 	<item id="word-046" value="maps" />
 	<item id="word-049" value="inv-w-mulanatalisman" />
-	<item id="word-04b" value="ign-shield-fake" />
+	<item id="word-04b" value="shield-fake" />
 	<item id="word-04c" value="inv-w-msx2" />
 	<item id="word-050" value="invus-lamp-unlit" />
 	<item id="word-051" value="inv-w-maternity" />
@@ -187,4 +187,5 @@
     <item id="word-072" value="ammo-clip" />
     <item id="word-073" value="ammo-mystery-73" />
     <item id="word-074" value="ammo-bullet" />
+	<item id="flags-1" value="death-tracker" />
 </items>

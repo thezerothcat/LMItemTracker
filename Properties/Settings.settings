@@ -18,7 +18,7 @@
       <Value Profile="(Default)">Origin Seal,Birth Seal,Life Seal,Death Seal</Value>
     </Setting>
     <Setting Name="BackgroundColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">Control</Value>
+      <Value Profile="(Default)">Black</Value>
     </Setting>
     <Setting Name="TextColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">White</Value>
@@ -30,7 +30,7 @@
       <Value Profile="(Default)">356</Value>
     </Setting>
     <Setting Name="FormHeight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">852</Value>
+      <Value Profile="(Default)">868</Value>
     </Setting>
     <Setting Name="ShowLastItem" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -46,6 +46,12 @@
     </Setting>
     <Setting Name="Panel6Contents" Type="System.String" Scope="User">
       <Value Profile="(Default)">reader.exe,xmailer.exe,yagomap.exe,yagostr.exe,bunemon.exe,bunplus.com,torude.exe,guild.exe,mantra.exe,emusic.exe,beolamu.exe,deathv.exe,randc.exe,capstar.exe,move.exe,mekuri.exe,bounce.exe,miracle.exe,mirai.exe,lamulana.exe</Value>
+    </Setting>
+    <Setting Name="ShowDeathCount" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DeathCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>
