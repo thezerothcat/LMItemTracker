@@ -3,7 +3,8 @@
 ## Features
 
 * Tracks progress for non-randomized playthroughs
-* Ability to change background color and text color, either by double-clicking the background/text or using the menu option.
+* Ability to change background color and text color by using the menu option.
+* Death tracker (beta) which automatically saves across sessions and can be manually adjustedby left or right clicking.
 * Ability to save settings.
 
 ## Installation
